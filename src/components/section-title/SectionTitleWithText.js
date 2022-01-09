@@ -11,12 +11,9 @@ const SectionTitleWithText = ({ spaceTopClass, spaceBottomClass }) => {
       <div className="container">
         <div className="welcome-content text-center">
           <h5>Who Are We</h5>
-          <h1>Welcome To Flone</h1>
+          <h1>Welcome To Kureghor</h1>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt labor et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commo consequat irure{" "}
+          Kureghor.com is the largest online shopping site in Bangladesh. Organized in September 2011, this Business to Customer site has earlier developed into an established marketplace for both sellers & customers. Now, Kureghor is the most famous online shopping marketplace in the country of Bangladesh. Kureghor direction to be the people’s marketplace; that’s why Kureghor has both high-priced branded goods together with low-priced non-branded goods on Kureghor's website.
           </p>
         </div>
       </div>

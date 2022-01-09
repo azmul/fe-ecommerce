@@ -12,7 +12,7 @@ const Contact = ({ location }) => {
   return (
     <Fragment>
       <MetaTags>
-        <title>Flone | Contact</title>
+        <title>Kureghor | Contact</title>
         <meta
           name="description"
           content="Contact of flone react minimalist eCommerce template."
@@ -28,7 +28,7 @@ const Contact = ({ location }) => {
         <div className="contact-area pt-100 pb-100">
           <div className="container">
             <div className="contact-map mb-10">
-              <LocationMap latitude="47.444" longitude="-122.176" />
+              <LocationMap latitude="23.2156112" longitude="89.1269443" />
             </div>
             <div className="custom-row-2">
               <div className="col-lg-4 col-md-5">
@@ -48,10 +48,10 @@ const Contact = ({ location }) => {
                     </div>
                     <div className="contact-info-dec">
                       <p>
-                        <a href="mailto:urname@email.com">urname@email.com</a>
+                        <a href="mailto:kureghor@email.com">kureghor@email.com</a>
                       </p>
                       <p>
-                        <a href="//urwebsitenaem.com">urwebsitenaem.com</a>
+                        <a href="http://kureghor.com">kureghor.com</a>
                       </p>
                     </div>
                   </div>
@@ -61,15 +61,20 @@ const Contact = ({ location }) => {
                     </div>
                     <div className="contact-info-dec">
                       <p>Address goes here, </p>
-                      <p>street, Crossroad 123.</p>
+                      <p>Salua, Chowgacha 123.</p>
                     </div>
                   </div>
                   <div className="contact-social text-center">
                     <h3>Follow Us</h3>
                     <ul>
                       <li>
-                        <a href="//facebook.com">
+                        <a href="https://web.facebook.com/Kureghorbangladesh">
                           <i className="fa fa-facebook" />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://www.youtube.com/c/Kureghor">
+                          <i className="fa fa-youtube" />
                         </a>
                       </li>
                       <li>
@@ -80,11 +85,6 @@ const Contact = ({ location }) => {
                       <li>
                         <a href="//thumblr.com">
                           <i className="fa fa-tumblr" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="//vimeo.com">
-                          <i className="fa fa-vimeo" />
                         </a>
                       </li>
                       <li>
@@ -107,7 +107,7 @@ const Contact = ({ location }) => {
                         <input name="name" placeholder="Name*" type="text" />
                       </div>
                       <div className="col-lg-6">
-                        <input name="email" placeholder="Email*" type="email" />
+                        <input name="phone" placeholder="Phone*" type="phone" />
                       </div>
                       <div className="col-lg-12">
                         <input

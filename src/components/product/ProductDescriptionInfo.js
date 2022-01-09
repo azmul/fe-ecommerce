@@ -7,6 +7,12 @@ import { addToCart } from "../../redux/actions/cartActions";
 import { addToWishlist } from "../../redux/actions/wishlistActions";
 import { addToCompare } from "../../redux/actions/compareActions";
 import Rating from "./sub-components/ProductRating";
+import {
+  FacebookShareButton,
+  PinterestShareButton,
+  TwitterShareButton,
+  LineShareButton,
+} from "react-share";
 
 const ProductDescriptionInfo = ({
   product,
@@ -20,7 +26,7 @@ const ProductDescriptionInfo = ({
   addToast,
   addToCart,
   addToWishlist,
-  addToCompare
+  addToCompare,
 }) => {
   const [selectedProductColor, setSelectedProductColor] = useState(
     product.variation ? product.variation[0].color : ""
@@ -103,7 +109,7 @@ const ProductDescriptionInfo = ({
             <span>Size</span>
             <div className="pro-details-size-content">
               {product.variation &&
-                product.variation.map(single => {
+                product.variation.map((single) => {
                   return single.color === selectedProductColor
                     ? single.size.map((singleSize, key) => {
                         return (
@@ -270,29 +276,36 @@ const ProductDescriptionInfo = ({
       <div className="pro-details-social">
         <ul>
           <li>
-            <a href="//facebook.com">
+            <FacebookShareButton
+              url={`${window.location.href}`}
+              quote={product.name}
+            >
               <i className="fa fa-facebook" />
-            </a>
+            </FacebookShareButton>
           </li>
           <li>
-            <a href="//dribbble.com">
-              <i className="fa fa-dribbble" />
-            </a>
-          </li>
-          <li>
-            <a href="//pinterest.com">
-              <i className="fa fa-pinterest-p" />
-            </a>
-          </li>
-          <li>
-            <a href="//twitter.com">
+            <TwitterShareButton
+              url={`${window.location.href}`}
+              quote={product.name}
+            >
               <i className="fa fa-twitter" />
-            </a>
+            </TwitterShareButton>
           </li>
           <li>
-            <a href="//linkedin.com">
+            <LineShareButton
+              url={`${window.location.href}`}
+              quote={product.name}
+            >
               <i className="fa fa-linkedin" />
-            </a>
+            </LineShareButton>
+          </li>
+          <li>
+            <PinterestShareButton
+              url={`${window.location.href}`}
+              quote={product.name}
+            >
+              <i className="fa fa-pinterest-p" />
+            </PinterestShareButton>
           </li>
         </ul>
       </div>
@@ -312,10 +325,10 @@ ProductDescriptionInfo.propTypes = {
   finalDiscountedPrice: PropTypes.number,
   finalProductPrice: PropTypes.number,
   product: PropTypes.object,
-  wishlistItem: PropTypes.object
+  wishlistItem: PropTypes.object,
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     addToCart: (
       item,
@@ -339,7 +352,7 @@ const mapDispatchToProps = dispatch => {
     },
     addToCompare: (item, addToast) => {
       dispatch(addToCompare(item, addToast));
-    }
+    },
   };
 };
 

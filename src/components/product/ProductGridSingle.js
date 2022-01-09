@@ -27,8 +27,6 @@ const ProductGridSingle = ({
     discountedPrice * currency.currencyRate
   ).toFixed(2);
 
-  console.log(product);
-
   return (
     <Fragment>
       <div
@@ -132,7 +130,7 @@ const ProductGridSingle = ({
           </div>
           <div className="product-content text-center">
             <h3>
-              <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
+              <Link to={"/product/" + product.id}>
                 {product.name}
               </Link>
             </h3>

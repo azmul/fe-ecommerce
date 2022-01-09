@@ -5,8 +5,8 @@
     "fbLink": "//www.facebook.com",
     "twitterLink": "//www.twitter.com",
     "instagramLink": "//www.instagram.com",
-    "name": "Mr.Mike Banding",
-    "position": "Manager"
+    "name": "Mr. Ziaur Rhaman",
+    "position": "Chief Executive Officer (CEO)"
   },
   {
     "id": "2",
@@ -14,8 +14,8 @@
     "fbLink": "//www.facebook.com",
     "twitterLink": "//www.twitter.com",
     "instagramLink": "//www.instagram.com",
-    "name": "Mr.Peter Pan",
-    "position": "Developer"
+    "name": "Mr. Partha Biswas",
+    "position": "Chief Marketing Officer (CMO)"
   },
   {
     "id": "3",
@@ -23,8 +23,8 @@
     "fbLink": "//www.facebook.com",
     "twitterLink": "//www.twitter.com",
     "instagramLink": "//www.instagram.com",
-    "name": "Ms.Sophia",
-    "position": "Designer"
+    "name": "Mr. Khairul Islam",
+    "position": "Chief Managing Director (CMD)"
   },
   {
     "id": "4",
@@ -32,7 +32,7 @@
     "fbLink": "//www.facebook.com",
     "twitterLink": "//www.twitter.com",
     "instagramLink": "//www.instagram.com",
-    "name": "Mr.John Lee",
-    "position": "Chairman"
+    "name": "Mr. Azmul",
+    "position": "Chief Technology Officer (CTO)"
   }
 ]
