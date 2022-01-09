@@ -9,7 +9,7 @@ export const getSliders = () => {
         const response = await api.get(Endpoints.SLIDERS);
         dispatch({
           type: FETCH_SLIDER,
-          payload: response.data
+          payload: response.data.data
         });
       } finally {}
        

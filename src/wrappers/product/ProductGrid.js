@@ -21,7 +21,7 @@ const ProductGrid = ({
 }) => {
   return (
     <Fragment>
-      {products.map(product => {
+      {products && products.length > 0 && products.map(product => {
         return (
           <ProductGridSingle
             sliderClassName={sliderClassName}

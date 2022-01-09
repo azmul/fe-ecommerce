@@ -42,6 +42,7 @@ const HeroSliderOne = () => {
       <div className="slider-active nav-style-1">
         <Swiper {...params}>
           {heroSliderData &&
+            heroSliderData.length > 0 &&
             heroSliderData.map((single, key) => {
               return (
                 <HeroSliderSingle

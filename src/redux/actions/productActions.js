@@ -10,7 +10,7 @@ export const fetchProducts = () => {
       const response = await api.get(Endpoints.PRODUCTS);
       dispatch({
         type: FETCH_PRODUCTS_SUCCESS,
-        payload: response.data
+        payload: response.data.data
       });
     } finally {}
   };

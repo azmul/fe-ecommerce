@@ -9,7 +9,7 @@ export const getTestimonials = () => {
         const response = await api.get(Endpoints.TESTIMONIALS);
         dispatch({
           type: FETCH_TESTIMONIAL,
-          payload: response.data
+          payload: response.data.data
         });
       } finally {}
        

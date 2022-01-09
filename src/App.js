@@ -68,8 +68,7 @@ const App = props => {
       loadLanguages({
         languages: {
           en: require("./translations/english.json"),
-          fn: require("./translations/french.json"),
-          de: require("./translations/germany.json")
+          bn: require("./translations/bangla.json")
         }
       })
     );
@@ -145,8 +144,8 @@ const App = props => {
 
                 {/* Shop product pages */}
                 <Route
-                  path={process.env.PUBLIC_URL + "/product/:id"}
-                  render={routeProps => (
+                  path={"/product/:id"}
+                  render={routeProps => ( 
                     <Product {...routeProps} key={routeProps.match.params.id} />
                   )}
                 />

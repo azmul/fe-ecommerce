@@ -1,8 +1,8 @@
 import { CHANGE_CURRENCY } from "../actions/currencyActions";
 
 const initState = {
-  currencySymbol: "$",
-  currencyName: "USD",
+  currencySymbol: "৳",
+  currencyName: "BDT",
   currencyRate: 1
 };
 
@@ -18,18 +18,10 @@ const currencyReducer = (state = initState, action) => {
         currencyName
       };
     }
-    if (currencyName === "EUR") {
+    if (currencyName === "BDT") {
       return {
         ...state,
-        currencySymbol: "€",
-        currencyRate: action.payload.currencyRate,
-        currencyName
-      };
-    }
-    if (currencyName === "GBP") {
-      return {
-        ...state,
-        currencySymbol: "£",
+        currencySymbol: "৳",
         currencyRate: action.payload.currencyRate,
         currencyName
       };

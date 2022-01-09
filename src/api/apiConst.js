@@ -1,11 +1,11 @@
 /** Version parameter for endpoint URL */
-const VERSION_URL = ""; // v1
-const API = VERSION_URL + ""  // /api
+const VERSION_URL = "v1"; 
+const API = VERSION_URL + "/api"; 
 
 /** Private endpoint URLs */
 const PRODUCTS = API + "/products";
-const SLIDERS = API + "/sliders"
-const TESTIMONIALS = API + "/testimonials"
+const SLIDERS = API + "/slider"
+const TESTIMONIALS = API + "/testimonial"
 /**
  * Enum with all api endpoints
  * @readonly

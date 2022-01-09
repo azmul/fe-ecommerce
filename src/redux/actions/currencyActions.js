@@ -7,7 +7,7 @@ export const changeCurrency = currencyName => {
       .get(`https://api.exchangeratesapi.io/latest?base=USD`)
       .then(response => {
         const rates = response.data.rates;
-        let currencyRate = 0;
+        let currencyRate = 1;
         for (const rate in rates) {
           if (rate === currencyName) {
             currencyRate = rates[rate];

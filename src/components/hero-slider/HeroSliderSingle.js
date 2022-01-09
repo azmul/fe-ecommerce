@@ -29,7 +29,7 @@ const HeroSliderSingle = ({ data, sliderClassName }) => {
             <div className="slider-single-img slider-animated-1">
               <img
                 className="animated img-fluid"
-                src={process.env.PUBLIC_URL + data.image}
+                src={data.image}
                 alt=""
               />
             </div>
