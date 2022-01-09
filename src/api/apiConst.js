@@ -6,6 +6,7 @@ const API = VERSION_URL + "/api";
 const PRODUCTS = API + "/products";
 const SLIDERS = API + "/slider"
 const TESTIMONIALS = API + "/testimonial"
+const MESSAGES = API + "/messages";
 /**
  * Enum with all api endpoints
  * @readonly
@@ -15,6 +16,7 @@ export const Endpoints = Object.freeze({
   PRODUCTS: PRODUCTS,
   SLIDERS: SLIDERS,
   TESTIMONIALS: TESTIMONIALS,
+  MESSAGES: MESSAGES,
 });
 
 /**

@@ -1,13 +1,32 @@
 import PropTypes from "prop-types";
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import MetaTags from "react-meta-tags";
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import LocationMap from "../../components/contact/LocationMap";
+import { Form, Input, Button } from 'antd';
+import * as contactApi from "../../api/contactApi";
+import { toast } from 'react-toastify';
 
 const Contact = ({ location }) => {
   const { pathname } = location;
+  const [form] = Form.useForm();
+  const [loading, setLoading] = useState(false);
+
+  const onFinish = async (values) => {
+    setLoading(true);
+    try {
+      await contactApi.sendMessage(values);
+      form.resetFields();
+      toast.success("Message send sucessfully");
+    } catch (e) {
+      toast.error("Message not send");
+    }finally{
+      setLoading(false);
+    }
+  };
+
 
   return (
     <Fragment>
@@ -18,8 +37,8 @@ const Contact = ({ location }) => {
           content="Contact of flone react minimalist eCommerce template."
         />
       </MetaTags>
-      <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
-      <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
+      <BreadcrumbsItem to={"/"}>Home</BreadcrumbsItem>
+      <BreadcrumbsItem to={pathname}>
         Contact
       </BreadcrumbsItem>
       <LayoutOne headerTop="visible">
@@ -101,33 +120,50 @@ const Contact = ({ location }) => {
                   <div className="contact-title mb-30">
                     <h2>Get In Touch</h2>
                   </div>
-                  <form className="contact-form-style">
+                  <Form form={form} onFinish={onFinish} className="contact-form-style">
                     <div className="row">
                       <div className="col-lg-6">
-                        <input name="name" placeholder="Name*" type="text" />
+                        <Form.Item
+                          name="name"
+                          rules={[{ required: true, message: 'Please input your username!' }]}
+                        >
+                          <Input name="name" placeholder="Name*" type="text" />
+                        </Form.Item>
                       </div>
                       <div className="col-lg-6">
-                        <input name="phone" placeholder="Phone*" type="phone" />
+                      <Form.Item
+                          name="phone"
+                          rules={[{ required: true, message: 'Please input your phone!' }]}
+                        >
+                          <Input name="phone" placeholder="Phone*" type="phone" />
+                        </Form.Item>
                       </div>
                       <div className="col-lg-12">
-                        <input
+                        <Form.Item
                           name="subject"
+                          rules={[{ required: true, message: 'Please input your subject!' }]}
+                        >
+                          <Input name="subject"
                           placeholder="Subject*"
-                          type="text"
-                        />
+                          type="text" />
+                        </Form.Item>
                       </div>
                       <div className="col-lg-12">
-                        <textarea
+                        <Form.Item
                           name="message"
+                          rules={[{ required: true, message: 'Please input your message!' }]}
+                        >
+                          <Input.TextArea name="message"
                           placeholder="Your Massege*"
-                          defaultValue={""}
-                        />
-                        <button className="submit" type="submit">
-                          SEND
-                        </button>
+                          />
+                        </Form.Item>
+                        <Button loading={loading} type="primary" htmlType="submit">
+                           SEND
+                        </Button>
+                        
                       </div>
                     </div>
-                  </form>
+                  </Form>
                   <p className="form-messege" />
                 </div>
               </div>
