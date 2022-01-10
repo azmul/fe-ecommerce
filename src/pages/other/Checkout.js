@@ -11,6 +11,7 @@ import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 const Checkout = ({ location, cartItems, currency }) => {
   const { pathname } = location;
   let cartTotalPrice = 0;
+  console.log(cartItems);
 
   return (
     <Fragment>
@@ -36,21 +37,9 @@ const Checkout = ({ location, cartItems, currency }) => {
                   <div className="billing-info-wrap">
                     <h3>Billing Details</h3>
                     <div className="row">
-                      <div className="col-lg-6 col-md-6">
-                        <div className="billing-info mb-20">
-                          <label>First Name</label>
-                          <input type="text" />
-                        </div>
-                      </div>
-                      <div className="col-lg-6 col-md-6">
-                        <div className="billing-info mb-20">
-                          <label>Last Name</label>
-                          <input type="text" />
-                        </div>
-                      </div>
                       <div className="col-lg-12">
                         <div className="billing-info mb-20">
-                          <label>Company Name</label>
+                          <label>Name</label>
                           <input type="text" />
                         </div>
                       </div>
@@ -65,20 +54,6 @@ const Checkout = ({ location, cartItems, currency }) => {
                             <option>Bangladesh</option>
                             <option>Barbados</option>
                           </select>
-                        </div>
-                      </div>
-                      <div className="col-lg-12">
-                        <div className="billing-info mb-20">
-                          <label>Street Address</label>
-                          <input
-                            className="billing-address"
-                            placeholder="House number and street name"
-                            type="text"
-                          />
-                          <input
-                            placeholder="Apartment, suite, unit etc."
-                            type="text"
-                          />
                         </div>
                       </div>
                       <div className="col-lg-12">
@@ -99,16 +74,24 @@ const Checkout = ({ location, cartItems, currency }) => {
                           <input type="text" />
                         </div>
                       </div>
-                      <div className="col-lg-6 col-md-6">
+                      <div className="col-lg-12">
                         <div className="billing-info mb-20">
                           <label>Phone</label>
                           <input type="text" />
                         </div>
                       </div>
-                      <div className="col-lg-6 col-md-6">
+                      <div className="col-lg-12">
                         <div className="billing-info mb-20">
-                          <label>Email Address</label>
-                          <input type="text" />
+                          <label>Street Address</label>
+                          <input
+                            className="billing-address"
+                            placeholder="House number and street name"
+                            type="text"
+                          />
+                          <input
+                            placeholder="Apartment, suite, unit etc."
+                            type="text"
+                          />
                         </div>
                       </div>
                     </div>
