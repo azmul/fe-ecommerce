@@ -18,7 +18,7 @@ const ProductSlider = ({ location, product }) => {
         <title>Kureghor | Product Page</title>
         <meta
           name="description"
-          content="Product page of flone react minimalist eCommerce template."
+          content="Product page of flone Purchase your desire products."
         />
       </MetaTags>
 

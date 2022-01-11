@@ -17,7 +17,7 @@ const BlogDetailsStandard = ({ location }) => {
         <title>Kureghor | Blog Post</title>
         <meta
           name="description"
-          content="Blog post page of flone react minimalist eCommerce template."
+          content="Blog post page of flone Purchase your desire products."
         />
       </MetaTags>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>

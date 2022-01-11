@@ -21,7 +21,7 @@ const About = ({ location , strings}) => {
         <title>Kureghor | About us</title>
         <meta
           name="description"
-          content="About page of Kureghor react minimalist eCommerce template."
+          content="About page of Kureghor Purchase your desire products."
         />
       </MetaTags>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>

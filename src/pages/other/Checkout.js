@@ -7,11 +7,13 @@ import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import { getDiscountPrice } from "../../helpers/product";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
+import { getOrderPayload } from "../../helpers/checkout";
 
 const Checkout = ({ location, cartItems, currency }) => {
   const { pathname } = location;
   let cartTotalPrice = 0;
-  console.log(cartItems);
+  const payload = getOrderPayload(cartItems, currency);
+  console.log(payload);
 
   return (
     <Fragment>
@@ -19,7 +21,7 @@ const Checkout = ({ location, cartItems, currency }) => {
         <title>Kureghor | Checkout</title>
         <meta
           name="description"
-          content="Checkout page of flone react minimalist eCommerce template."
+          content="Checkout page of kureghor eCommerce."
         />
       </MetaTags>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>

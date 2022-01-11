@@ -13,7 +13,7 @@ const HomeFashion = () => {
         <title>Kureghor | Fashion Home</title>
         <meta
           name="description"
-          content="Fashion home of flone react minimalist eCommerce template."
+          content="Fashion home of flone Purchase your desire products."
         />
       </MetaTags>
       <LayoutOne

@@ -34,7 +34,7 @@ const Contact = ({ location }) => {
         <title>Kureghor | Contact</title>
         <meta
           name="description"
-          content="Contact of flone react minimalist eCommerce template."
+          content="Contact of flone Purchase your desire products."
         />
       </MetaTags>
       <BreadcrumbsItem to={"/"}>Home</BreadcrumbsItem>

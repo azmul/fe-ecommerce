@@ -16,7 +16,7 @@ const BlogNoSidebar = ({ location }) => {
         <title>Kureghor | Blog</title>
         <meta
           name="description"
-          content="Blog of flone react minimalist eCommerce template."
+          content="Blog of flone Purchase your desire products."
         />
       </MetaTags>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>

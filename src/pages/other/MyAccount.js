@@ -16,7 +16,7 @@ const MyAccount = ({ location }) => {
         <title>Kureghor | My Account</title>
         <meta
           name="description"
-          content="Compare page of flone react minimalist eCommerce template."
+          content="Purchase your desire products."
         />
       </MetaTags>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
