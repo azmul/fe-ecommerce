@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import MetaTags from "react-meta-tags";
 import { connect } from "react-redux";
@@ -8,12 +8,75 @@ import { getDiscountPrice } from "../../helpers/product";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import { getOrderPayload } from "../../helpers/checkout";
+import { Form, Input, Button, Select, message } from 'antd';
+import * as address from '@bangladeshi/bangladesh-address';
+import bdPhone from '@0devco/bd-phone-validator'
+import * as orderApi from "../../api/orderApi";
 
 const Checkout = ({ location, cartItems, currency }) => {
   const { pathname } = location;
+  const [form] = Form.useForm();
+  const [loading, setLoading] = useState(false);
+  const [district, setDistrict] = useState(undefined);
+
   let cartTotalPrice = 0;
-  const payload = getOrderPayload(cartItems, currency);
-  console.log(payload);
+
+  const onFinish = async (values) => {
+    if(!values.phone) {
+      form.setFields([
+        {
+          name: 'phone',
+          errors: ["Plese give correct phone number"]
+        }
+      ])
+      return;
+    }
+
+    const payload = getOrderPayload(cartItems, currency);
+    payload.userAddress = values;
+
+    setLoading(true);
+    try {
+      await orderApi.createNewOrder(payload);
+      form.resetFields();
+      message.success("Order created sucessfully");
+    } catch (e) {
+      message.error("Order is not created");
+    }finally{
+      setLoading(false);
+    }
+  }
+
+  const handleDistrictSelect = (district) => {
+    form.setFields([
+     {
+       name: 'upazila',
+       value: undefined
+     }
+   ])
+   setDistrict(district)
+  }
+
+  const checkMobileNumber= (event) => {
+    const number = event.target.value;
+    if(!number) return;
+    const info = bdPhone(number);
+    if (info.core_valid && info.has_operator) {
+      form.setFields([
+        {
+          name: 'phone',
+          errors: undefined
+        }
+      ])
+    } else {
+      form.setFields([
+        {
+          name: 'phone',
+          errors: ["Not correct number"]
+        }
+      ])
+    }
+  }
 
   return (
     <Fragment>
@@ -34,66 +97,69 @@ const Checkout = ({ location, cartItems, currency }) => {
         <div className="checkout-area pt-95 pb-100">
           <div className="container">
             {cartItems && cartItems.length >= 1 ? (
-              <div className="row">
+              <Form name="checkout" layout="vertical" form={form} onFinish={onFinish} className="row">
                 <div className="col-lg-7">
                   <div className="billing-info-wrap">
                     <h3>Billing Details</h3>
-                    <div className="row">
+                     <div className="row">
                       <div className="col-lg-12">
                         <div className="billing-info mb-20">
-                          <label>Name</label>
-                          <input type="text" />
-                        </div>
-                      </div>
-                      <div className="col-lg-12">
-                        <div className="billing-select mb-20">
-                          <label>Country</label>
-                          <select>
-                            <option>Select a country</option>
-                            <option>Azerbaijan</option>
-                            <option>Bahamas</option>
-                            <option>Bahrain</option>
-                            <option>Bangladesh</option>
-                            <option>Barbados</option>
-                          </select>
+                          <Form.Item
+                            name="name"
+                            label="Name"
+                            rules={[{ required: true, message: 'Please input your name!' }]}
+                          >
+                            <Input name="name" type="text" />
+                          </Form.Item>
                         </div>
                       </div>
                       <div className="col-lg-12">
                         <div className="billing-info mb-20">
-                          <label>Town / City</label>
-                          <input type="text" />
-                        </div>
-                      </div>
-                      <div className="col-lg-6 col-md-6">
-                        <div className="billing-info mb-20">
-                          <label>State / County</label>
-                          <input type="text" />
-                        </div>
-                      </div>
-                      <div className="col-lg-6 col-md-6">
-                        <div className="billing-info mb-20">
-                          <label>Postcode / ZIP</label>
-                          <input type="text" />
+                          <Form.Item
+                              name="phone"
+                              label="Phone" 
+                            >
+                            <Input onChange={checkMobileNumber} name="phone" type="text" />
+                          </Form.Item>
                         </div>
                       </div>
                       <div className="col-lg-12">
                         <div className="billing-info mb-20">
-                          <label>Phone</label>
-                          <input type="text" />
+                          <Form.Item name="district" 
+                            label="District"
+                            rules={[{ required: true, message: 'Please select your city!'}]}>
+                            <Select onChange={handleDistrictSelect} allowClear showSearch>
+                              {
+                                address.allDistict().map((district => <Select.Option key={district} value={district}>{district}</Select.Option>))
+                              }
+                            </Select>
+                          </Form.Item>
+                        </div>
+                      </div>
+                      <div className="col-lg-12 col-md-12">
+                        <div className="billing-info mb-20">
+                         <Form.Item
+                            label="Upazila"
+                            name="upazila"
+                            rules={[{ required: true, message: 'Please select your upazila!' }]}
+                          >
+                            <Select allowClear showSearch >
+                              {
+                              district && address.upazilasOf(district).map((item => <Select.Option key={item.upazila} value={item.upazila}>{item.upazila}</Select.Option>))
+                              }
+                            </Select>
+                          </Form.Item>
                         </div>
                       </div>
                       <div className="col-lg-12">
                         <div className="billing-info mb-20">
-                          <label>Street Address</label>
-                          <input
-                            className="billing-address"
-                            placeholder="House number and street name"
-                            type="text"
-                          />
-                          <input
-                            placeholder="Apartment, suite, unit etc."
-                            type="text"
-                          />
+                          <Form.Item
+                              name="address"
+                              label="Full Street Address(House number / street name etc)"
+                              rules={[{ required: true, message: 'Please input your address!' }]}
+                            >
+                            <Input.TextArea  type="text" />
+                          </Form.Item>
                         </div>
                       </div>
                     </div>
@@ -101,12 +167,12 @@ const Checkout = ({ location, cartItems, currency }) => {
                     <div className="additional-info-wrap">
                       <h4>Additional information</h4>
                       <div className="additional-info">
-                        <label>Order notes</label>
-                        <textarea
-                          placeholder="Notes about your order, e.g. special notes for delivery. "
-                          name="message"
-                          defaultValue={""}
-                        />
+                          <Form.Item
+                              name="message"
+                              label="Notes about your order, e.g. special notes for delivery. "
+                            >
+                            <Input.TextArea  type="text" />
+                          </Form.Item>
                       </div>
                     </div>
                   </div>
@@ -183,11 +249,13 @@ const Checkout = ({ location, cartItems, currency }) => {
                       <div className="payment-method"></div>
                     </div>
                     <div className="place-order mt-25">
-                      <button className="btn-hover">Place Order</button>
+                      <Button loading={loading} className="btn-hover" type="primary" htmlType="submit">
+                         Place Order
+                        </Button>
                     </div>
                   </div>
                 </div>
-              </div>
+              </Form>
             ) : (
               <div className="row">
                 <div className="col-lg-12">

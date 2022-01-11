@@ -8,6 +8,7 @@ import LocationMap from "../../components/contact/LocationMap";
 import { Form, Input, Button } from 'antd';
 import * as contactApi from "../../api/contactApi";
 import { toast } from 'react-toastify';
+import bdPhone from '@0devco/bd-phone-validator'
 
 const Contact = ({ location }) => {
   const { pathname } = location;
@@ -15,6 +16,15 @@ const Contact = ({ location }) => {
   const [loading, setLoading] = useState(false);
 
   const onFinish = async (values) => {
+    if(!values.phone) {
+      form.setFields([
+        {
+          name: 'phone',
+          errors: ["Plese give correct phone number"]
+        }
+      ])
+      return;
+    }
     setLoading(true);
     try {
       await contactApi.sendMessage(values);
@@ -26,6 +36,27 @@ const Contact = ({ location }) => {
       setLoading(false);
     }
   };
+
+  const checkMobileNumber= (event) => {
+    const number = event.target.value;
+    if(!number) return;
+    const info = bdPhone(number);
+    if (info.core_valid && info.has_operator) {
+      form.setFields([
+        {
+          name: 'phone',
+          errors: undefined
+        }
+      ])
+    } else {
+      form.setFields([
+        {
+          name: 'phone',
+          errors: ["Not correct number"]
+        }
+      ])
+    }
+  }
 
 
   return (
@@ -133,9 +164,8 @@ const Contact = ({ location }) => {
                       <div className="col-lg-6">
                       <Form.Item
                           name="phone"
-                          rules={[{ required: true, message: 'Please input your phone!' }]}
                         >
-                          <Input name="phone" placeholder="Phone*" type="phone" />
+                          <Input onChange={checkMobileNumber}  name="phone" placeholder="Phone*" type="text" />
                         </Form.Item>
                       </div>
                       <div className="col-lg-12">

@@ -3,11 +3,15 @@
   "version": "1.1.0",
   "private": true,
   "dependencies": {
+    "@0devco/bd-phone-validator": "^2.0.0",
+    "@bangladeshi/bangladesh-address": "^1.0.4",
+    "add": "^2.0.6",
     "animate.css": "^3.7.2",
     "antd": "^4.18.2",
     "axios": "^0.19.0",
     "bootstrap": "4.4.1",
     "google-maps-react": "^2.0.2",
+    "lodash": "^4.17.21",
     "prop-types": "^15.7.2",
     "query-string": "^7.0.1",
     "react": "^17.0.2",
@@ -37,7 +41,8 @@
     "redux-multilanguage": "^0.1.2",
     "redux-thunk": "^2.3.0",
     "swiper": "^5.2.0",
-    "uuid": "^3.3.3"
+    "uuid": "^3.3.3",
+    "yarn": "^1.22.17"
   },
   "scripts": {
     "start": "react-scripts start",
