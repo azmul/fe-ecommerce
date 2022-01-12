@@ -5,6 +5,7 @@ import wishlistReducer from "./wishlistReducer";
 import compareReducer from "./compareReducer";
 import sliderReducer from "./sliderReducer";
 import testimonialReducer from "./testimonialReducer";
+import userReducer from "./userReducer";
 
 import { combineReducers } from "redux";
 import { createMultilanguageReducer } from "redux-multilanguage";
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   compareData: compareReducer,
   sliderData: sliderReducer,
   testimonialData: testimonialReducer,
+  userData: userReducer,
 });
 
 export default rootReducer;

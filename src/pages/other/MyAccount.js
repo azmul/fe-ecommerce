@@ -31,7 +31,7 @@ const MyAccount = ({ location }) => {
             <div className="row">
               <div className="ml-auto mr-auto col-lg-9">
                 <div className="myaccount-wrapper">
-                  <Accordion defaultActiveKey="0">
+                  <Accordion>
                     <Card className="single-my-account mb-20">
                       <Card.Header className="panel-heading">
                         <Accordion.Toggle variant="link" eventKey="0">
@@ -130,7 +130,7 @@ const MyAccount = ({ location }) => {
                       <Card.Header className="panel-heading">
                         <Accordion.Toggle variant="link" eventKey="2">
                           <h3 className="panel-title">
-                            <span>3 .</span> Modify your address book entries{" "}
+                            <span>3 .</span> Order History
                           </h3>
                         </Accordion.Toggle>
                       </Card.Header>
@@ -138,32 +138,7 @@ const MyAccount = ({ location }) => {
                         <Card.Body>
                           <div className="myaccount-info-wrapper">
                             <div className="account-info-wrapper">
-                              <h4>Address Book Entries</h4>
-                            </div>
-                            <div className="entries-wrapper">
-                              <div className="row">
-                                <div className="col-lg-6 col-md-6 d-flex align-items-center justify-content-center">
-                                  <div className="entries-info text-center">
-                                    <p>Farhana hayder (shuvo) </p>
-                                    <p>hastech </p>
-                                    <p> Road#1 , Block#c </p>
-                                    <p> Rampura. </p>
-                                    <p>Dhaka </p>
-                                    <p>Bangladesh </p>
-                                  </div>
-                                </div>
-                                <div className="col-lg-6 col-md-6 d-flex align-items-center justify-content-center">
-                                  <div className="entries-edit-delete text-center">
-                                    <button className="edit">Edit</button>
-                                    <button>Delete</button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="billing-back-btn">
-                              <div className="billing-btn">
-                                <button type="submit">Continue</button>
-                              </div>
+                              <h4>Orders</h4>
                             </div>
                           </div>
                         </Card.Body>

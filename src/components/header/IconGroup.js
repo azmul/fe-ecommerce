@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import MenuCart from "./sub-components/MenuCart";
 import { removeFromCart } from "../../redux/actions/cartActions";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import {FETCH_USER} from "../../redux/actions/userActions";
 
 const IconGroup = ({
   currency,
@@ -11,9 +14,12 @@ const IconGroup = ({
   wishlistData,
   compareData,
   removeFromCart,
-  iconWhiteClass
+  iconWhiteClass,
 }) => {
-  const handleClick = e => {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.userData.user);
+
+  const handleClick = (e) => {
     e.currentTarget.nextSibling.classList.toggle("active");
   };
 
@@ -24,12 +30,19 @@ const IconGroup = ({
     offcanvasMobileMenu.classList.add("active");
   };
 
+  const handleLogout = () => {
+    dispatch({
+      type: FETCH_USER,
+      payload: null
+    });
+  }
+
   return (
     <div
       className={`header-right-wrap ${iconWhiteClass ? iconWhiteClass : ""}`}
     >
       <div className="same-style header-search d-none d-lg-block">
-        <button className="search-active" onClick={e => handleClick(e)}>
+        <button className="search-active" onClick={(e) => handleClick(e)}>
           <i className="pe-7s-search" />
         </button>
         <div className="search-content">
@@ -44,25 +57,38 @@ const IconGroup = ({
       <div className="same-style account-setting d-none d-lg-block">
         <button
           className="account-setting-active"
-          onClick={e => handleClick(e)}
+          onClick={(e) => handleClick(e)}
         >
           <i className="pe-7s-user-female" />
         </button>
         <div className="account-dropdown">
           <ul>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/login-register"}>Login</Link>
-            </li>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/login-register"}>
-                Register
-              </Link>
-            </li>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/my-account"}>
-                my account
-              </Link>
-            </li>
+            {!user && (
+              <li>
+                <Link to={process.env.PUBLIC_URL + "/login-register"}>
+                  Login
+                </Link>
+              </li>
+            )}
+            {!user && (
+              <li>
+                <Link to={process.env.PUBLIC_URL + "/login-register"}>
+                  Register
+                </Link>
+              </li>
+            )}
+            {user && (
+              <li>
+                <Link to={process.env.PUBLIC_URL + "/my-account"}>
+                  my account
+                </Link>
+              </li>
+            )}
+            {user && (
+              <li>
+                <a href={process.env.PUBLIC_URL + "/"} onClick={handleLogout}>Logout</a>
+              </li>
+            )}
           </ul>
         </div>
       </div>
@@ -83,7 +109,7 @@ const IconGroup = ({
         </Link>
       </div>
       <div className="same-style cart-wrap d-none d-lg-block">
-        <button className="icon-cart" onClick={e => handleClick(e)}>
+        <button className="icon-cart" onClick={(e) => handleClick(e)}>
           <i className="pe-7s-shopbag" />
           <span className="count-style">
             {cartData && cartData.length ? cartData.length : 0}
@@ -122,23 +148,23 @@ IconGroup.propTypes = {
   currency: PropTypes.object,
   iconWhiteClass: PropTypes.string,
   removeFromCart: PropTypes.func,
-  wishlistData: PropTypes.array
+  wishlistData: PropTypes.array,
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     currency: state.currencyData,
     cartData: state.cartData,
     wishlistData: state.wishlistData,
-    compareData: state.compareData
+    compareData: state.compareData,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     removeFromCart: (item, addToast) => {
       dispatch(removeFromCart(item, addToast));
-    }
+    },
   };
 };
 

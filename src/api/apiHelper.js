@@ -1,8 +1,8 @@
 import axios from "axios";
 import qs from "query-string";
-import { toast } from 'react-toastify';
 import { ResponseStatus } from "./apiConst";
-//import store from "../redux/store";
+import { message } from "antd";
+import store from "../redux/store";
 
 /**
  * Axios error interceptor
@@ -11,7 +11,6 @@ import { ResponseStatus } from "./apiConst";
  const errorInterceptor = (axiosError) => {
   if (axiosError && axiosError.response) {
     const response = axiosError.response;
-
     if (response.status === ResponseStatus.UNAUTHORIZED) {
       // If status of response from API is a 401, then log out
       // AuthHelper.logout();
@@ -20,34 +19,33 @@ import { ResponseStatus } from "./apiConst";
        * If response status starts with a 5, indicating a server error,
        * then display user friendly error message
        */
-       toast("Something went worng in server");
+       message.error("Something went worng in server");
     } else {
       // Else display error message returned from API
       if (response.status === ResponseStatus.ERROR_RESPONSE) {
+        
         for (let error of response.data.errors) {
           for (let err of error.errors) {
             if (err.message) {
-              toast(err.message);
+              message.error(err.message);
             }
           }
         }
       } else {
-        const apiErrorMessage = response.data.localized_message
-          ? response.data.localized_message
-          : response.data.message;
+        const apiErrorMessage = response.data.message;
 
         if (apiErrorMessage) {
-          toast(apiErrorMessage);
+          message.error(apiErrorMessage);
         }
       }
     }
   } else if (typeof axiosError === "object") {
     // If error response from API is not readeable, show default error
-    toast("Default fallback error");
+    message.error("Default fallback error");
   } else {
     // If not a custom 401 error, display error
     if (axiosError !== ResponseStatus.UNAUTHORIZED) {
-      toast(axiosError);
+      message.error(axiosError);
     }
   }
 
@@ -60,8 +58,7 @@ import { ResponseStatus } from "./apiConst";
  */
  const authInterceptor = async (request) => {
 
-  //const accessToken = store.getState().authModel.token;
-  const accessToken = false;
+  const accessToken = store.getState().userData?.token;
   if (accessToken) {
     request.headers["x-auth-token"] = accessToken;
     return request;
