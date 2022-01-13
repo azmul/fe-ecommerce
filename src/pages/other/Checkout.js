@@ -304,9 +304,17 @@ const Checkout = ({ location, cartItems, currency }) => {
                                 cartTotalPrice.toFixed(2)}
                             </li>
                           </ul>
+                          <br />
+                          <ul>
+                            <li className="order-total">Payment</li>
+                            <li>
+                              Cash On Delivery
+                            </li>
+                          </ul>
                         </div>
                       </div>
-                      <div className="payment-method"></div>
+                      <div className="payment-method">          
+                      </div>
                     </div>
                     <div className="place-order mt-25">
                       <Button

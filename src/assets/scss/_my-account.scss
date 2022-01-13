@@ -76,6 +76,31 @@
         margin-top: 7px;
       }
     }
+    .orders {
+      margin-bottom: 30px;
+      .ant-card-head {
+        background-color: #efefef;
+      }
+      .ant-card-body {
+        padding: 0;
+      }
+      .delivery{
+        background-color: #f7f7f7;
+        padding: 12px;
+      }
+      .product{
+        margin-top: 10px;
+        padding: 10px;
+        border: 1px solid rgba(195, 195, 195, 0.1);
+        background-color: #fafafa;
+        text-align: center;
+      }
+      .ant-divider-vertical{
+        height: auto;
+        margin: 0;
+      }
+    }
+    
     .billing-info {
       margin-bottom: 20px;
       label {
@@ -85,7 +110,6 @@
       }
       input {
         background: transparent none repeat scroll 0 0;
-        border: 1px solid #ebebeb;
         color: #000;
         height: 40px;
         padding: 0 15px;
@@ -123,6 +147,7 @@
           line-height: 1;
           padding: 16px 35px 17px;
           text-transform: uppercase;
+          height: 45px;
           cursor: pointer;
           transition: all 0.3s ease 0s;
           &:hover {

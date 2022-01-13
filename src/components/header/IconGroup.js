@@ -6,7 +6,7 @@ import MenuCart from "./sub-components/MenuCart";
 import { removeFromCart } from "../../redux/actions/cartActions";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import {FETCH_USER} from "../../redux/actions/userActions";
+import {FETCH_USER, USER_TOKEN} from "../../redux/actions/userActions";
 
 const IconGroup = ({
   currency,
@@ -35,6 +35,10 @@ const IconGroup = ({
       type: FETCH_USER,
       payload: null
     });
+    dispatch({
+      type: USER_TOKEN,
+      payload: false
+    });
   }
 
   return (
@@ -59,7 +63,7 @@ const IconGroup = ({
           className="account-setting-active"
           onClick={(e) => handleClick(e)}
         >
-          <i className="pe-7s-user-female" />
+          {user && user.picture_url ? <img width="20" height="20" src={user.picture_url} alt="PROFILE" />: <i className="pe-7s-user-female" />}
         </button>
         <div className="account-dropdown">
           <ul>

@@ -228,7 +228,7 @@ const LoginRegister = ({ location }) => {
                               prefix={
                                 <UserOutlined className="site-form-item-icon" />
                               }
-                              placeholder="Phone"
+                              placeholder="Name"
                             />
                           </Form.Item>
                           <Form.Item

@@ -34,3 +34,14 @@ export const getUser = async (
   const resp = await api.get(url);
   return resp.data;
 };
+
+/** Change Password  */
+export const changePassword = async (
+  params
+) => {
+  const url = `${Endpoints.USER}/password/change`;
+  const resp = await api.patch(url,  {
+    ...params
+  });
+  return resp.data;
+};
