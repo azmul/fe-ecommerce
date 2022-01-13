@@ -45,3 +45,15 @@ export const changePassword = async (
   });
   return resp.data;
 };
+
+/** Update Profile User */
+export const updateProfile = async (
+  params
+) => {
+  const url = Endpoints.USER;
+  
+  const resp = await api.patch(url,  {
+    ...params
+  });
+  return resp.data;
+};
