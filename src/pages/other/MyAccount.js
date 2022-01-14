@@ -183,7 +183,7 @@ const MyAccount = ({ location }) => {
                             <div className="myaccount-info-wrapper">
                               <div className="account-info-wrapper">
                                 <h4>My Account Information</h4>
-                                <h5>Your Personal Details</h5>
+                                <h5>Your Customer ID: <b>{user && user?.id}</b></h5>
                               </div>
                               <div className="row">
                                 <div className="col-lg-12 col-md-12">
@@ -476,7 +476,7 @@ const MyAccount = ({ location }) => {
                             <div className="account-info-wrapper">
                               <h4>Orders</h4>
                             </div>
-                            {orders.length > 0 ? (
+                            {orders.reverse().length > 0 ? (
                               <>
                                 {orders.map((order) => (
                                   <div className="row orders">

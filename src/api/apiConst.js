@@ -8,7 +8,7 @@ const SLIDERS = API + "/slider"
 const TESTIMONIALS = API + "/testimonial"
 const MESSAGES = API + "/messages";
 const ORDERS = API + "/orders";
-const USER = API + "/user";
+const USER = API + "/users";
 /**
  * Enum with all api endpoints
  * @readonly
