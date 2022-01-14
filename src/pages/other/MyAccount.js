@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect, useCallback } from "react";
 import MetaTags from "react-meta-tags";
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import Card from "react-bootstrap/Card";
@@ -43,6 +43,16 @@ const MyAccount = ({ location }) => {
   const history = useHistory();
   const user = useSelector((state) => state.userData.user);
   const orders = user?.orders || [];
+
+  const getUser = useCallback(async () => {
+    try {
+      const response = await userApi.getUser(user?._id);
+      dispatch({
+        type: FETCH_USER,
+        payload: response,
+      });
+    } finally {}
+  },[dispatch, user._id])
 
   const onChangePasswordFinish = async (values) => {
     setLoadingChangePassword(true);
@@ -115,18 +125,17 @@ const MyAccount = ({ location }) => {
 
       await userApi.updateProfile(values);
       message.success("Profile updated sucessfully");
-
-      const response = await userApi.getUser(user?._id);
-      dispatch({
-        type: FETCH_USER,
-        payload: response,
-      });
+      getUser();
     } catch (e) {
       message.error(e.message);
     } finally {
       setLoadingProfile(false);
     }
   };
+
+   useEffect(() => {
+     getUser()
+   },[getUser])
 
   return (
     <Fragment>
