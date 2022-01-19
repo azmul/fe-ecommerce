@@ -75,7 +75,7 @@ const Contact = ({ location }) => {
       <LayoutOne headerTop="visible">
         {/* breadcrumb */}
         <Breadcrumb />
-        <div className="contact-area pt-100 pb-100">
+        <div className="contact-area pt-50 pb-100">
           <div className="container">
             <div className="contact-map mb-10">
               <LocationMap latitude="23.2156112" longitude="89.1269443" />

@@ -15,7 +15,7 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }) => {
       <nav>
         <ul>
           <li>
-            <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+            <Link to={process.env.PUBLIC_URL + "/shop"}>
               {" "}
               {strings["shop"]}
               {sidebarMenu ? (
@@ -30,7 +30,7 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }) => {
               <li>
                 <ul>
                   <li className="mega-menu-title">
-                    <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+                    <Link to={process.env.PUBLIC_URL + "/shop"}>
                       {strings["shop_items"]}
                     </Link>
                   </li>
@@ -54,7 +54,7 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }) => {
               <li>
                 <ul>
                   <li className="mega-menu-img">
-                    <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+                    <Link to={process.env.PUBLIC_URL + "/shop"}>
                       <img
                         src={
                           process.env.PUBLIC_URL +
@@ -69,12 +69,12 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }) => {
             </ul>
           </li>
           <li>
-            <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+            <Link to={process.env.PUBLIC_URL + "/shop"}>
               {strings["collection"]}
             </Link>
           </li>
           <li>
-            <Link to={process.env.PUBLIC_URL + "/blog-standard"}>
+            <Link to={process.env.PUBLIC_URL + "/blog"}>
               {strings["blog"]}
             </Link>
           </li>

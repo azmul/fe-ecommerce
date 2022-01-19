@@ -9,6 +9,7 @@ const TESTIMONIALS = API + "/testimonial"
 const MESSAGES = API + "/messages";
 const ORDERS = API + "/orders";
 const USER = API + "/users";
+const BLOG = API + "/blog";
 /**
  * Enum with all api endpoints
  * @readonly
@@ -21,6 +22,7 @@ export const Endpoints = Object.freeze({
   MESSAGES: MESSAGES,
   ORDERS: ORDERS,
   USER: USER,
+  BLOG: BLOG,
 });
 
 /**

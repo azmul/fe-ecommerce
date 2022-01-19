@@ -77,7 +77,7 @@ const TabProductSix = ({
         <div className="view-more text-center mt-20 toggle-btn6 col-12">
           <Link
             className="loadMore6"
-            to={process.env.PUBLIC_URL + "/shop-grid-standard"}
+            to={process.env.PUBLIC_URL + "/shop"}
           >
             VIEW MORE PRODUCTS
           </Link>

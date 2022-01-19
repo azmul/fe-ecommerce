@@ -39,7 +39,7 @@ const TestimonialOne = ({
     >
       <div className="container">
         <div className="row">
-          <div className="col-lg-10 ml-auto mr-auto">
+          <div className="col-lg-10 mb-50 ml-auto mr-auto">
             <div className="testimonial-active nav-style-1 nav-testi-style">
               <Swiper {...settings}>
                 {testimonialData &&

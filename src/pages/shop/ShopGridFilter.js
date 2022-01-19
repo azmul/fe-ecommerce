@@ -60,7 +60,7 @@ const ShopGridFilter = ({location, products}) => {
                 {/* breadcrumb */}
                 <Breadcrumb />
 
-                <div className="shop-area pt-95 pb-100">
+                <div className="shop-area pt-50 pb-100">
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-12">

@@ -103,7 +103,6 @@ const App = props => {
                   component={HomeFashion}
                 />
                 
-
                 {/* Shop pages */}
                 <Route
                   path={process.env.PUBLIC_URL + "/shop-grid-standard"}
@@ -172,7 +171,7 @@ const App = props => {
 
                 {/* Blog pages */}
                 <Route
-                  path={process.env.PUBLIC_URL + "/blog-standard"}
+                  path={process.env.PUBLIC_URL + "/blog"}
                   component={BlogStandard}
                 />
                 <Route
@@ -184,8 +183,10 @@ const App = props => {
                   component={BlogRightSidebar}
                 />
                 <Route
-                  path={process.env.PUBLIC_URL + "/blog-details-standard"}
-                  component={BlogDetailsStandard}
+                  path={process.env.PUBLIC_URL + "/blog-details/:id"}
+                  render={routeProps => ( 
+                    <BlogDetailsStandard {...routeProps} key={routeProps.match.params.id} />
+                  )}
                 />
 
                 {/* Other pages */}

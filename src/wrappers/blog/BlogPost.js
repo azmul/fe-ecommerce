@@ -123,7 +123,7 @@ const BlogPost = () => {
           </div>
         </div>
       </div>
-      <div className="next-previous-post">
+      {/* <div className="next-previous-post">
         <Link to={process.env.PUBLIC_URL + "/blog-details-standard"}>
           {" "}
           <i className="fa fa-angle-left" /> prev post
@@ -131,7 +131,7 @@ const BlogPost = () => {
         <Link to={process.env.PUBLIC_URL + "/blog-details-standard"}>
           next post <i className="fa fa-angle-right" />
         </Link>
-      </div>
+      </div> */}
     </Fragment>
   );
 };

@@ -27,7 +27,7 @@ const BlogRightSidebar = ({ location }) => {
       <LayoutOne headerTop="visible">
         {/* breadcrumb */}
         <Breadcrumb />
-        <div className="blog-area pt-100 pb-100">
+        <div className="blog-area pt-50 pb-100">
           <div className="container">
             <div className="row">
               <div className="col-lg-9">

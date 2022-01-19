@@ -12,7 +12,7 @@ const BannerSix = ({ spaceTopClass, spaceBottomClass }) => {
         <div className="row">
           <div className="col-lg-6 col-md-6">
             <div className="single-banner mb-20">
-              <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+              <Link to={process.env.PUBLIC_URL + "/shop"}>
                 <img
                   src={
                     process.env.PUBLIC_URL + "/assets/img/banner/banner-32.png"
@@ -24,7 +24,7 @@ const BannerSix = ({ spaceTopClass, spaceBottomClass }) => {
                 <span>-20% Off</span>
                 <h2>New Tulip</h2>
                 <h5>Best for your Mind.</h5>
-                <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+                <Link to={process.env.PUBLIC_URL + "/shop"}>
                   SHOP NOW
                 </Link>
               </div>
@@ -32,7 +32,7 @@ const BannerSix = ({ spaceTopClass, spaceBottomClass }) => {
           </div>
           <div className="col-lg-6 col-md-6">
             <div className="single-banner mb-20">
-              <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+              <Link to={process.env.PUBLIC_URL + "/shop"}>
                 <img
                   src={
                     process.env.PUBLIC_URL + "/assets/img/banner/banner-33.png"
@@ -45,13 +45,13 @@ const BannerSix = ({ spaceTopClass, spaceBottomClass }) => {
                 <p>
                   Starting At <span>$99.00</span>
                 </p>
-                <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+                <Link to={process.env.PUBLIC_URL + "/shop"}>
                   <i className="fa fa-long-arrow-right" />
                 </Link>
               </div>
             </div>
             <div className="single-banner mb-20">
-              <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+              <Link to={process.env.PUBLIC_URL + "/shop"}>
                 <img
                   src={
                     process.env.PUBLIC_URL + "/assets/img/banner/banner-34.png"
@@ -64,7 +64,7 @@ const BannerSix = ({ spaceTopClass, spaceBottomClass }) => {
                 <p>
                   Starting At <span>$99.00</span>
                 </p>
-                <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+                <Link to={process.env.PUBLIC_URL + "/shop"}>
                   <i className="fa fa-long-arrow-right" />
                 </Link>
               </div>

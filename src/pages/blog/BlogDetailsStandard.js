@@ -7,8 +7,9 @@ import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import BlogSidebar from "../../wrappers/blog/BlogSidebar";
 import BlogComment from "../../wrappers/blog/BlogComment";
 import BlogPost from "../../wrappers/blog/BlogPost";
+import { connect } from "react-redux";
 
-const BlogDetailsStandard = ({ location }) => {
+const BlogDetailsStandard = ({ location, blogId }) => {
   const { pathname } = location;
 
   return (
@@ -27,7 +28,7 @@ const BlogDetailsStandard = ({ location }) => {
       <LayoutOne headerTop="visible">
         {/* breadcrumb */}
         <Breadcrumb />
-        <div className="blog-area pt-100 pb-100">
+        <div className="blog-area pt-50 pb-100">
           <div className="container">
             <div className="row flex-row-reverse">
               <div className="col-lg-9">
@@ -55,4 +56,12 @@ BlogDetailsStandard.propTypes = {
   location: PropTypes.object
 };
 
-export default BlogDetailsStandard;
+const mapStateToProps = (state, ownProps) => {
+  const blogId = ownProps.match.params.id;
+  return {
+    blogId: blogId
+  };
+};
+
+
+export default connect(mapStateToProps)(BlogDetailsStandard);
