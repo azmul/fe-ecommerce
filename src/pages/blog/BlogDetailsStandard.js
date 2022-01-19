@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import MetaTags from "react-meta-tags";
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import LayoutOne from "../../layouts/LayoutOne";
@@ -8,9 +8,18 @@ import BlogSidebar from "../../wrappers/blog/BlogSidebar";
 import BlogComment from "../../wrappers/blog/BlogComment";
 import BlogPost from "../../wrappers/blog/BlogPost";
 import { connect } from "react-redux";
+import { getBlog } from "../../redux/actions/blogActions";
+import { useDispatch, useSelector } from "react-redux";
 
 const BlogDetailsStandard = ({ location, blogId }) => {
   const { pathname } = location;
+  const dispatch = useDispatch();
+
+  const blog = useSelector((state) => state.blogData.blog);
+
+  useEffect(() => {
+    dispatch(getBlog(blogId));
+  }, [blogId, dispatch]);
 
   return (
     <Fragment>
@@ -22,6 +31,7 @@ const BlogDetailsStandard = ({ location, blogId }) => {
         />
       </MetaTags>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
+      <BreadcrumbsItem to={process.env.PUBLIC_URL + "/blog"}>Blog</BreadcrumbsItem>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
         Blog Post
       </BreadcrumbsItem>
@@ -34,7 +44,7 @@ const BlogDetailsStandard = ({ location, blogId }) => {
               <div className="col-lg-9">
                 <div className="blog-details-wrapper ml-20">
                   {/* blog post */}
-                  <BlogPost />
+                  <BlogPost blog={blog} />
 
                   {/* blog post comment */}
                   <BlogComment />

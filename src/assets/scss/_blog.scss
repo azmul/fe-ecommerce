@@ -251,7 +251,7 @@
               &:last-child {
                 margin-right: 0;
               }
-              a {
+              a, button {
                 border-radius: 50px;
                 color: #fff;
                 display: inline-block;
@@ -267,27 +267,30 @@
                   width: 25px;
                 }
                 &.facebook {
-                  background-color: #3b5998;
-                  border: 1px solid #3b5998;
+                  background-color: #3b5998 !important;
+                  border: 1px solid #3b5998 !important;
+                  color: #fff !important;
                   &:hover {
-                    background-color: transparent;
-                    color: #3b5998;
+                    background-color: transparent !important;
+                    color: #3b5998 !important;
                   }
                 }
                 &.twitter {
-                  background-color: #55acee;
-                  border: 1px solid #55acee;
+                  background-color: #55acee !important;
+                  border: 1px solid #55acee !important;
+                  color: #fff !important;
                   &:hover {
-                    background-color: transparent;
-                    color: #55acee;
+                    background-color: transparent !important;
+                    color: #55acee !important;
                   }
                 }
                 &.instagram {
-                  background-color: #c32aa3;
-                  border: 1px solid #c32aa3;
+                  background-color: #c32aa3 !important;
+                  border: 1px solid #c32aa3 !important; 
+                  color: #fff !important;
                   &:hover {
-                    background-color: transparent;
-                    color: #c32aa3;
+                    background-color: transparent !important;
+                    color: #c32aa3 !important;
                   }
                 }
               }

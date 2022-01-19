@@ -2,6 +2,11 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import {Typography} from "antd";
+import {
+  FacebookShareButton,
+  PinterestShareButton,
+  TwitterShareButton,
+} from "react-share";
 
 const { Paragraph } = Typography;
 
@@ -25,9 +30,7 @@ const BlogPosts = ({blogs}) => {
               <ul>
                 <li>{moment(blog.createdAt).format('DD.MM.YYYY')}</li>
                 <li>
-                  <Link to={`/blog-details/${blog.id}`}>
                     {blog.like_count} <i className="fa fa-comments-o" />
-                  </Link>
                 </li>
               </ul>
             </div>
@@ -50,19 +53,19 @@ const BlogPosts = ({blogs}) => {
                 <div className="share-social">
                   <ul>
                     <li>
-                      <a className="facebook" href="//facebook.com">
+                      <FacebookShareButton className="facebook" url={`${window.location.href}/blog-details/${blog.id}`} quote={blog.title}>
                         <i className="fa fa-facebook" />
-                      </a>
+                      </FacebookShareButton>
                     </li>
                     <li>
-                      <a className="twitter" href="//twitter.com">
+                    <TwitterShareButton className="twitter" url={`${window.location.href}/blog-details/${blog.id}`} quote={blog.title}>
                         <i className="fa fa-twitter" />
-                      </a>
+                      </TwitterShareButton>
                     </li>
                     <li>
-                      <a className="instagram" href="//instagram.com">
+                    <PinterestShareButton className="instagram" url={`${window.location.href}/blog-details/${blog.id}`} quote={blog.title}>
                         <i className="fa fa-instagram" />
-                      </a>
+                      </PinterestShareButton>
                     </li>
                   </ul>
                 </div>

@@ -13,6 +13,7 @@ import { Pagination } from "antd";
 const BlogStandard = ({ location }) => {
   const { pathname } = location;
   const dispatch = useDispatch();
+
   const blogs = useSelector((state) => state.blogData.blogs);
 
   const paginationHandle = (page, pageSize) => {

@@ -1,7 +1,9 @@
-import { FETCH_BLOGS } from "../actions/blogActions";
+import { FETCH_BLOGS, FETCH_RECENT_BLOGS, FETCH_BLOG } from "../actions/blogActions";
 
 const initState = {
-  blogs: []
+  blogs: [],
+  recentBlogs: [],
+  blog: null,
 };
 
 const blogReducer = (state = initState, action) => {
@@ -9,6 +11,20 @@ const blogReducer = (state = initState, action) => {
     return {
       ...state,
       blogs: action.payload
+    };
+  }
+
+  if (action.type === FETCH_RECENT_BLOGS) {
+    return {
+      ...state,
+      recentBlogs: action.payload
+    };
+  }
+
+  if (action.type === FETCH_BLOG) {
+    return {
+      ...state,
+      blog: action.payload
     };
   }
 

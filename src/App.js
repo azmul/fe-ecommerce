@@ -105,7 +105,7 @@ const App = props => {
                 
                 {/* Shop pages */}
                 <Route
-                  path={process.env.PUBLIC_URL + "/shop-grid-standard"}
+                  path={process.env.PUBLIC_URL + "/shop"}
                   component={ShopGridStandard}
                 />
                 <Route
