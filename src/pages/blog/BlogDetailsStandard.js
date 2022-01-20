@@ -10,6 +10,7 @@ import BlogPost from "../../wrappers/blog/BlogPost";
 import { connect } from "react-redux";
 import { getBlog } from "../../redux/actions/blogActions";
 import { useDispatch, useSelector } from "react-redux";
+import { Divider } from "antd";
 
 const BlogDetailsStandard = ({ location, blogId }) => {
   const { pathname } = location;
@@ -45,9 +46,9 @@ const BlogDetailsStandard = ({ location, blogId }) => {
                 <div className="blog-details-wrapper ml-20">
                   {/* blog post */}
                   <BlogPost blog={blog} />
-
+                   <Divider />
                   {/* blog post comment */}
-                  <BlogComment />
+                  <BlogComment id={blog && blog._id} commentLists={blog && blog.comments && blog.comments.length > 0 ? blog.comments : []} />
                 </div>
               </div>
               <div className="col-lg-3">

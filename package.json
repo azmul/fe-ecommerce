@@ -12,6 +12,7 @@
     "bootstrap": "4.4.1",
     "google-maps-react": "^2.0.2",
     "lodash": "^4.17.21",
+    "numeric-code": "^1.0.4",
     "prop-types": "^15.7.2",
     "query-string": "^7.0.1",
     "react": "^17.0.2",

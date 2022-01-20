@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
 import moment from "moment";
 import {
   FacebookShareButton,
@@ -12,28 +11,26 @@ const BlogPost = ({ blog }) => {
     <Fragment>
       <div className="blog-details-top">
         <div className="blog-details-img">
-          <img alt={blog.title} src={blog.picture_url} />
+          <img alt={blog && blog.title} src={blog && blog.picture_url} />
         </div>
         <div className="blog-details-content">
           <div className="blog-meta-2">
             <ul>
-              <li>{moment(blog.createdAt).format("DD.MM.YYYY")}</li>
+              <li>{moment(blog && blog.createdAt).format("DD.MM.YYYY")}</li>
               <li>
-                  {blog.like_count} <i className="fa fa-comments-o" />
+                  {blog && blog.like_count} <i className="fa fa-comments-o" />
               </li>
             </ul>
           </div>
-          <h3>{blog.title}</h3>
-          <p>{blog.content}</p>
+          <h3>{blog && blog.title}</h3>
+          <p>{blog && blog.content}</p>
         </div>
       </div>
       <div className="tag-share">
         <div className="dec-tag">
           <ul>
             <li>
-              <Link to={process.env.PUBLIC_URL + "/blog-standard"}>
-                {blog.category}
-              </Link>
+              {blog && blog.category}
             </li>
           </ul>
         </div>
@@ -45,7 +42,7 @@ const BlogPost = ({ blog }) => {
                 <FacebookShareButton
                   className="facebook"
                   url={window.location.href}
-                  quote={blog.title}
+                  quote={blog && blog.title}
                 >
                   <i className="fa fa-facebook" />
                 </FacebookShareButton>
@@ -54,7 +51,7 @@ const BlogPost = ({ blog }) => {
                 <TwitterShareButton
                   className="twitter"
                   url={window.location.href}
-                  quote={blog.title}
+                  quote={blog && blog.title}
                 >
                   <i className="fa fa-twitter" />
                 </TwitterShareButton>
@@ -63,7 +60,7 @@ const BlogPost = ({ blog }) => {
                 <PinterestShareButton
                   className="instagram"
                   url={window.location.href}
-                  quote={blog.title}
+                  quote={blog && blog.title}
                 >
                   <i className="fa fa-instagram" />
                 </PinterestShareButton>

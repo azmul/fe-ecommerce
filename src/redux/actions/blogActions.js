@@ -13,8 +13,7 @@ export const getBlogs = (params) => {
           type: FETCH_BLOGS,
           payload: response.data
         });
-      } finally {}
-       
+      } finally {} 
   };
 };
 

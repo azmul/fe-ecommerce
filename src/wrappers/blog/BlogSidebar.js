@@ -16,23 +16,12 @@ const BlogSidebar = () => {
   return (
     <div className="sidebar-style">
       <div className="sidebar-widget">
-        <h4 className="pro-sidebar-title">Search </h4>
-        <div className="pro-sidebar-search mb-55 mt-25">
-          <form className="pro-sidebar-search-form" action="#">
-            <input type="text" placeholder="Search here..." />
-            <button>
-              <i className="pe-7s-search" />
-            </button>
-          </form>
-        </div>
-      </div>
-      <div className="sidebar-widget">
         <h4 className="pro-sidebar-title">Recent Blogs </h4>
         <div className="sidebar-project-wrap mt-30">
         {blogs && blogs.length > 0 && blogs.map(blog=>(
-          <div className="single-sidebar-blog">
+          <div className="single-sidebar-blog" key={blog._id}>
             <div className="sidebar-blog-img">
-              <Link to={`/blog-details/${blog}`}>
+              <Link to={`/blog-details/${blog._id}`}>
                 <img
                   src={
                     blog.picture_url
@@ -44,7 +33,7 @@ const BlogSidebar = () => {
             <div className="sidebar-blog-content">
               <span>{blog.category}</span>
               <h4>
-                <Link to={`/blog-details/${blog}`}>
+                <Link to={`/blog-details/${blog._id}`}>
                   <Typography.Paragraph ellipsis={{ rows: 1 }} >
                     {blog.title}
                   </Typography.Paragraph>
@@ -73,7 +62,7 @@ const BlogSidebar = () => {
               <div className="sidebar-widget-list-left">
                 <input type="checkbox" defaultValue />{" "}
                 <Link to={process.env.PUBLIC_URL + "/blog-standard"}>
-                  Men <span>4</span>{" "}
+                  Men <span>6</span>{" "}
                 </Link>
                 <span className="checkmark" />
               </div>
@@ -82,7 +71,7 @@ const BlogSidebar = () => {
               <div className="sidebar-widget-list-left">
                 <input type="checkbox" defaultValue />{" "}
                 <Link to={process.env.PUBLIC_URL + "/blog-standard"}>
-                  Bags <span>4</span>{" "}
+                  Bags <span>2</span>{" "}
                 </Link>
                 <span className="checkmark" />
               </div>
@@ -91,7 +80,7 @@ const BlogSidebar = () => {
               <div className="sidebar-widget-list-left">
                 <input type="checkbox" defaultValue />{" "}
                 <Link to={process.env.PUBLIC_URL + "/blog-standard"}>
-                  Accessories <span>4</span>{" "}
+                  Accessories <span>9</span>{" "}
                 </Link>
                 <span className="checkmark" />
               </div>

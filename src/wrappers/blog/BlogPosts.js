@@ -18,7 +18,7 @@ const BlogPosts = ({blogs}) => {
       <div className="col-lg-6 col-md-6 col-sm-12">
         <div className="blog-wrap-2 mb-30">
           <div className="blog-img-2">
-            <Link to={`/blog-details/${blog.id}`}>
+            <Link to={`/blog-details/${blog._id}`}>
               <img
                 src={blog.picture_url}
                 alt={blog.title}
@@ -35,7 +35,7 @@ const BlogPosts = ({blogs}) => {
               </ul>
             </div>
             <h4>
-              <Link to={`/blog-details/${blog.id}`}>
+              <Link to={`/blog-details/${blog._id}`}>
                 {blog.title}
               </Link>
             </h4>
@@ -44,7 +44,7 @@ const BlogPosts = ({blogs}) => {
             </Paragraph>
             <div className="blog-share-comment">
               <div className="blog-btn-2">
-                <Link to={`/blog-details/${blog.id}`} >
+                <Link to={`/blog-details/${blog._id}`} >
                   read more
                 </Link>
               </div>
