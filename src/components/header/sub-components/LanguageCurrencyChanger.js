@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { changeLanguage } from "redux-multilanguage";
+import { useSelector } from "react-redux";
 
 const LanguageCurrencyChanger = ({
   currency,
@@ -8,6 +9,8 @@ const LanguageCurrencyChanger = ({
   currentLanguageCode,
   dispatch
 }) => {
+  const setting = useSelector((state) => state.settingData.setting);
+
   const changeLanguageTrigger = e => {
     const languageCode = e.target.value;
     dispatch(changeLanguage(languageCode));
@@ -40,7 +43,7 @@ const LanguageCurrencyChanger = ({
         </div>
       </div>
       <div className="same-language-currency">
-        <p>Call Us 01518329044</p>
+        <p>Call Us {setting && setting.call_us_number}</p>
       </div>
     </div>
   );

@@ -10,6 +10,10 @@ const MESSAGES = API + "/messages";
 const ORDERS = API + "/orders";
 const USER = API + "/users";
 const BLOG = API + "/blog";
+const SETTING = API + "/setting";
+const QUESTION = API + "/question";
+const REVIEW = API + "/review";
+
 /**
  * Enum with all api endpoints
  * @readonly
@@ -23,6 +27,9 @@ export const Endpoints = Object.freeze({
   ORDERS: ORDERS,
   USER: USER,
   BLOG: BLOG,
+  SETTING: SETTING,
+  QUESTION: QUESTION,
+  REVIEW: REVIEW,
 });
 
 /**

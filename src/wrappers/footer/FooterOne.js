@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { animateScroll } from "react-scroll";
 import FooterCopyright from "../../components/footer/FooterCopyright";
 import FooterNewsletter from "../../components/footer/FooterNewsletter";
+import { useSelector } from "react-redux";
 
 const FooterOne = ({
   backgroundColorClass,
@@ -11,10 +12,11 @@ const FooterOne = ({
   spaceBottomClass,
   containerClass,
   extraFooterClass,
-  sideMenu
+  sideMenu,
 }) => {
   const [scroll, setScroll] = useState(0);
   const [top, setTop] = useState(0);
+  const setting = useSelector((state) => state.settingData.setting);
 
   useEffect(() => {
     setTop(100);
@@ -81,52 +83,73 @@ const FooterOne = ({
               sideMenu ? "col-xl-3 col-sm-4" : "col-lg-2 col-sm-6"
             }`}
           >
-            <div className={`${
+            <div
+              className={`${
                 sideMenu
                   ? "footer-widget mb-30 ml-145"
                   : "footer-widget mb-30 ml-75"
-              }`}>
+              }`}
+            >
               <div className="footer-title">
                 <h3>FOLLOW US</h3>
               </div>
               <div className="footer-list">
                 <ul>
-                  <li>
-                    <a
-                      href="https://web.facebook.com/Kureghorbangladesh"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Facebook
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://www.youtube.com/c/Kureghor"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Youtube
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="//www.twitter.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Twitter
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="//www.instagram.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Instagram
-                    </a>
-                  </li>
+                  {setting && setting.facebook_link && (
+                    <li>
+                      <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={setting.facebook_link}
+                      >
+                        Facebook
+                      </a>
+                    </li>
+                  )}
+                  {setting && setting.twitter_link && (
+                    <li>
+                      <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={setting.twitter_link}
+                      >
+                        Twitter
+                      </a>
+                    </li>
+                  )}
+                  {setting && setting.youtube_link && (
+                    <li>
+                      <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={setting.youtube_link}
+                      >
+                        Youtube
+                      </a>
+                    </li>
+                  )}
+                  {setting && setting.pinterest_link && (
+                    <li>
+                      <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={setting.pinterest_link}
+                      >
+                        Pinterest
+                      </a>
+                    </li>
+                  )}
+                  {setting && setting.instagram_link && (
+                    <li>
+                      <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={setting.instagram_link}
+                      >
+                        Instagram
+                      </a>
+                    </li>
+                  )}
                 </ul>
               </div>
             </div>
@@ -137,7 +160,11 @@ const FooterOne = ({
             }`}
           >
             {/* footer newsletter */}
-            <FooterNewsletter spaceBottomClass="mb-30" spaceLeftClass="ml-70" sideMenu={sideMenu} />
+            <FooterNewsletter
+              spaceBottomClass="mb-30"
+              spaceLeftClass="ml-70"
+              sideMenu={sideMenu}
+            />
           </div>
         </div>
       </div>
@@ -157,7 +184,7 @@ FooterOne.propTypes = {
   extraFooterClass: PropTypes.string,
   sideMenu: PropTypes.bool,
   spaceBottomClass: PropTypes.string,
-  spaceTopClass: PropTypes.string
+  spaceTopClass: PropTypes.string,
 };
 
 export default FooterOne;

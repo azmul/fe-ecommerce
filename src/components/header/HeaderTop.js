@@ -4,6 +4,7 @@ import { multilanguage } from "redux-multilanguage";
 import { connect } from "react-redux";
 import { changeCurrency } from "../../redux/actions/currencyActions";
 import LanguageCurrencyChanger from "./sub-components/LanguageCurrencyChanger";
+import { useSelector } from "react-redux";
 
 const HeaderTop = ({
   currency,
@@ -12,6 +13,8 @@ const HeaderTop = ({
   dispatch,
   borderStyle
 }) => {
+  const setting = useSelector((state) => state.settingData.setting);
+
   return (
     <div
       className={`header-top-wap ${
@@ -28,7 +31,7 @@ const HeaderTop = ({
         <p>
           Free delivery on order over{" "}
           <span>
-            {currency.currencySymbol + (200 * currency.currencyRate).toFixed(2)}
+            {currency.currencySymbol + ((setting && setting.free_delivery_money ? Number(setting.free_delivery_money) : 1) * currency.currencyRate).toFixed(2)}
           </span>
         </p>
       </div>

@@ -131,7 +131,7 @@
 }
 
 .description-review-bottom {
-  padding: 33px 0 0;
+  padding: 0px 0 0;
   .product-description-wrapper {
     p {
       margin: 0 0 8px;
@@ -169,6 +169,11 @@
 .single-review {
   display: flex;
   margin: 0 0 50px;
+  .login-register-link {
+    a {
+      color: #1a9cb7;
+    }
+  }
   @media #{$xs-layout} {
     display: block;
   }

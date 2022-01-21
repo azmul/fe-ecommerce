@@ -11,7 +11,6 @@ import ProductImageDescription from "../../wrappers/product/ProductImageDescript
 
 const Product = ({ location, product }) => {
   const { pathname } = location;
-
   return (
     <Fragment>
       <MetaTags>
@@ -41,7 +40,7 @@ const Product = ({ location, product }) => {
         {/* product description tab */}
         <ProductDescriptionTab
           spaceBottomClass="pb-90"
-          productFullDesc={product && product.fullDescription}
+          product={product}
         />
 
         {/* related product slider */}

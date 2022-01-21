@@ -24,6 +24,7 @@ const BlogPost = ({ blog }) => {
           </div>
           <h3>{blog && blog.title}</h3>
           <p>{blog && blog.content}</p>
+          {blog && blog.product_url && <a rel="noopener noreferrer" target="_blank" href={blog && blog.product_url}>For Order Click Here</a>}
         </div>
       </div>
       <div className="tag-share">

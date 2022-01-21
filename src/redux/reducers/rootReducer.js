@@ -7,6 +7,7 @@ import sliderReducer from "./sliderReducer";
 import testimonialReducer from "./testimonialReducer";
 import userReducer from "./userReducer";
 import blogReducer from "./blogReducer";
+import settingReducer from "./settingReducer";
 
 import { combineReducers } from "redux";
 import { createMultilanguageReducer } from "redux-multilanguage";
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   testimonialData: testimonialReducer,
   userData: userReducer,
   blogData: blogReducer,
+  settingData: settingReducer,
 });
 
 export default rootReducer;

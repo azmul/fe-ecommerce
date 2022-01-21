@@ -1,7 +1,9 @@
-import { FETCH_PRODUCTS_SUCCESS } from "../actions/productActions";
+import { FETCH_PRODUCTS_SUCCESS, FETCH_REVIEW, FETCH_QUESTION } from "../actions/productActions";
 
 const initState = {
-  products: []
+  products: [],
+  review: null,
+  question: null,
 };
 
 const productReducer = (state = initState, action) => {
@@ -9,6 +11,20 @@ const productReducer = (state = initState, action) => {
     return {
       ...state,
       products: action.payload
+    };
+  }
+
+  if (action.type === FETCH_REVIEW) {
+    return {
+      ...state,
+      review: action.payload
+    };
+  }
+
+  if (action.type === FETCH_QUESTION) {
+    return {
+      ...state,
+      question: action.payload
     };
   }
 

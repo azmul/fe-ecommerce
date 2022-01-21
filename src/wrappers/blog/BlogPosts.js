@@ -42,6 +42,7 @@ const BlogPosts = ({blogs}) => {
             <Paragraph ellipsis={{ rows: 4 }} >
               {blog.content}
             </Paragraph>
+            {blog && blog.product_url && <a rel="noopener noreferrer" target="_blank" href={blog && blog.product_url}>For Order Click Here</a>}
             <div className="blog-share-comment">
               <div className="blog-btn-2">
                 <Link to={`/blog-details/${blog._id}`} >

@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { BreadcrumbsProvider } from "react-breadcrumbs-dynamic";
 import { useDispatch } from 'react-redux'
 import { fetchProducts } from "./redux/actions/productActions";
+import { getSetting } from "./redux/actions/settingActions";
 
 // home pages
 const HomeFashion = lazy(() => import("./pages/home/HomeFashion"));
@@ -73,6 +74,7 @@ const App = props => {
       })
     );
     dispatch(fetchProducts());
+    dispatch(getSetting());
   },[dispatch]);
 
   return (
