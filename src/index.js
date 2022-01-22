@@ -7,11 +7,13 @@ import App from "./App";
 import "./assets/scss/style.scss";
 import * as serviceWorker from "./serviceWorker";
 import store from "./redux/store";
+import { ClearCacheProvider } from 'react-clear-cache';
 
 ReactDOM.render(
+  <ClearCacheProvider duration={10000}>
   <Provider store={store}>
     <App />
-  </Provider>,
+  </Provider> </ClearCacheProvider>,
   document.getElementById("root")
 );
 

@@ -15,7 +15,7 @@ const BlogPosts = ({blogs}) => {
   return (
     <Fragment>
     {blogs && blogs.length > 0 ? blogs.map(blog => (
-      <div className="col-lg-6 col-md-6 col-sm-12">
+      <div key={blog._id} className="col-lg-6 col-md-6 col-sm-12">
         <div className="blog-wrap-2 mb-30">
           <div className="blog-img-2">
             <Link to={`/blog-details/${blog._id}`}>

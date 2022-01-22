@@ -9,6 +9,7 @@ import { BreadcrumbsProvider } from "react-breadcrumbs-dynamic";
 import { useDispatch } from 'react-redux'
 import { fetchProducts } from "./redux/actions/productActions";
 import { getSetting } from "./redux/actions/settingActions";
+import { useClearCacheCtx } from "react-clear-cache";
 
 // home pages
 const HomeFashion = lazy(() => import("./pages/home/HomeFashion"));
@@ -63,6 +64,14 @@ const NotFound = lazy(() => import("./pages/other/NotFound"));
 
 const App = props => {
   const dispatch = useDispatch();
+  const { isLatestVersion, emptyCacheStorage } = useClearCacheCtx();
+
+  /** Empy Cache when new version comes */
+  useEffect(() => {
+    if(!isLatestVersion) {
+      emptyCacheStorage();
+    }
+  },[emptyCacheStorage, isLatestVersion])
   
   useEffect(() => {
     dispatch(

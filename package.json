@@ -1,7 +1,8 @@
 {
   "name": "kureghor-react",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": true,
+  "main": "src/index.js",
   "dependencies": {
     "@0devco/bd-phone-validator": "^2.0.0",
     "@bangladeshi/bangladesh-address": "^1.0.4",
@@ -19,6 +20,7 @@
     "react-app-polyfill": "^1.0.4",
     "react-bootstrap": "1.0.0-beta.16",
     "react-breadcrumbs-dynamic": "^1.2.1",
+    "react-clear-cache": "^1.4.12",
     "react-countdown-now": "^2.1.2",
     "react-countup": "^4.2.3",
     "react-dom": "^17.0.2",
@@ -46,8 +48,10 @@
     "yarn": "^1.22.17"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "prebuild": "npm run generate-build-meta",
+    "generate-build-meta": "./node_modules/react-clear-cache/bin/cli.js",
+    "start": "npm run prebuild && react-scripts start",
+    "build": "npm run prebuild && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
