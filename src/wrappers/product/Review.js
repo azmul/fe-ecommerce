@@ -112,12 +112,10 @@ const ProductReview = ({ reviews }) => {
         {!user ? (
           <Row justify="center">
             <Col sm={15} xs={24}>
-              <div className="single-review">
                 <h5 className="login-register-link">
                   <Link to={"/login-register"}>Login</Link> or{" "}
                   <Link to={"/login-register"}>Register</Link> to give review
                 </h5>
-              </div>
             </Col>
           </Row>
         ) : (

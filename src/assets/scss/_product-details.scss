@@ -166,14 +166,15 @@
   }
 }
 
+.login-register-link {
+  a {
+    color: #1a9cb7;
+  }
+}
+
 .single-review {
   display: flex;
   margin: 0 0 50px;
-  .login-register-link {
-    a {
-      color: #1a9cb7;
-    }
-  }
   @media #{$xs-layout} {
     display: block;
   }

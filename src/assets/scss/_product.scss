@@ -2308,3 +2308,12 @@
         margin-left: 45px;
     }
 }
+
+.product-question-section{
+    .question{
+        height: 450px;
+        overflow-y: scroll;
+        padding: 16px;
+        border-radius: 4px;
+    }
+}

@@ -10,7 +10,7 @@ import store from "./redux/store";
 import { ClearCacheProvider } from 'react-clear-cache';
 
 ReactDOM.render(
-  <ClearCacheProvider duration={10000}>
+  <ClearCacheProvider duration={5000}>
   <Provider store={store}>
     <App />
   </Provider> </ClearCacheProvider>,

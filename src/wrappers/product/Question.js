@@ -94,12 +94,10 @@ const ProductQuestion = ({ questions }) => {
         {!user ? (
           <Row justify="center">
             <Col sm={15} xs={24}>
-              <div className="single-question">
                 <h5 className="login-register-link">
                   <Link to={"/login-register"}>Login</Link> or{" "}
-                  <Link to={"/login-register"}>Register</Link> to give question
+                  <Link to={"/login-register"}>Register</Link> to ask question
                 </h5>
-              </div>
             </Col>
           </Row>
         ) : (
