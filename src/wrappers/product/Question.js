@@ -25,7 +25,7 @@ const Editor = ({ onChange, onSubmit, submitting, value }) => (
 
 const ProductQuestion = ({ questions }) => {
   const user = useSelector((state) => state.userData.user);
-  const [submitting, setSubmitting] = useState(false);
+  const [submitting] = useState(false);
   const [value, setValue] = useState("");
 
   const handleChange = (e) => {
@@ -41,12 +41,16 @@ const ProductQuestion = ({ questions }) => {
   return (
     <>
       {!user ? (
+        <Row justify="center">
+          <Col sm={15} xs={24}>
         <div className="single-review">
           <h5 className="login-register-link">
             <Link to={"/login-register"}>Login</Link> or{" "}
             <Link to={"/login-register"}>Register</Link> to post a question
           </h5>
         </div>
+        </Col>
+        </Row>
       ) : (
         <Row justify="center">
           <Col sm={15} xs={24}>

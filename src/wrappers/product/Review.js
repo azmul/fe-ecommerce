@@ -25,7 +25,7 @@ const Editor = ({ onChange, onSubmit, submitting, value }) => (
 
 const ProductReview = ({ reviews }) => {
   const user = useSelector((state) => state.userData.user);
-  const [submitting, setSubmitting] = useState(false);
+  const [submitting] = useState(false);
   const [value, setValue] = useState("");
 
   const handleChange = (e) => {
@@ -42,12 +42,16 @@ const ProductReview = ({ reviews }) => {
     <>
       <div>
         {!user ? (
-          <div className="single-review">
-            <h5 className="login-register-link">
-              <Link to={"/login-register"}>Login</Link> or{" "}
-              <Link to={"/login-register"}>Register</Link> to give review
-            </h5>
-          </div>
+          <Row justify="center">
+            <Col sm={15} xs={24}>
+              <div className="single-review">
+                <h5 className="login-register-link">
+                  <Link to={"/login-register"}>Login</Link> or{" "}
+                  <Link to={"/login-register"}>Register</Link> to give review
+                </h5>
+              </div>
+            </Col>
+          </Row>
         ) : (
           <Row justify="center">
             <Col sm={15} xs={24}>

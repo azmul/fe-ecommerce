@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import MenuCart from "./sub-components/MenuCart";
 import { removeFromCart } from "../../redux/actions/cartActions";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import {FETCH_USER, USER_TOKEN} from "../../redux/actions/userActions";
+import { useSelector, useDispatch } from "react-redux";
+import { FETCH_USER, USER_TOKEN } from "../../redux/actions/userActions";
+import { Form, Input, Button } from "antd";
+import { useHistory } from "react-router-dom";
 
 const IconGroup = ({
   currency,
@@ -17,7 +18,9 @@ const IconGroup = ({
   iconWhiteClass,
 }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const user = useSelector((state) => state.userData.user);
+  const [form] = Form.useForm();
 
   const handleClick = (e) => {
     e.currentTarget.nextSibling.classList.toggle("active");
@@ -33,13 +36,29 @@ const IconGroup = ({
   const handleLogout = () => {
     dispatch({
       type: FETCH_USER,
-      payload: null
+      payload: null,
     });
     dispatch({
       type: USER_TOKEN,
-      payload: false
+      payload: false,
     });
-  }
+  };
+
+  const onSearch = (values) => {
+    if(values && values.search) {
+      form.setFields([
+        {
+          name: "search",
+          value: undefined,
+          errors: undefined,
+        },
+      ]);
+      history.push("/shop");
+    } else {
+      return;
+    }
+    
+  };
 
   return (
     <div
@@ -50,12 +69,21 @@ const IconGroup = ({
           <i className="pe-7s-search" />
         </button>
         <div className="search-content">
-          <form action="#">
-            <input type="text" placeholder="Search" />
-            <button className="button-search">
-              <i className="pe-7s-search" />
-            </button>
-          </form>
+          <Form form={form} onFinish={onSearch} className="contact-form-style">
+            <Form.Item
+              name="search"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input placeholder="Search" type="text" />
+            </Form.Item>
+            <Button style={{width: "100%", height: "40px"}} type="primary" htmlType="submit">
+              <i style={{fontWeight: "bold", color: "white"}} className="pe-7s-search" />
+            </Button>
+          </Form>
         </div>
       </div>
       <div className="same-style account-setting d-none d-lg-block">
@@ -63,7 +91,11 @@ const IconGroup = ({
           className="account-setting-active"
           onClick={(e) => handleClick(e)}
         >
-          {user && user.picture_url ? <img width="20" height="20" src={user.picture_url} alt="PROFILE" />: <i className="pe-7s-user-female" />}
+          {user && user.picture_url ? (
+            <img width="20" height="20" src={user.picture_url} alt="PROFILE" />
+          ) : (
+            <i className="pe-7s-user-female" />
+          )}
         </button>
         <div className="account-dropdown">
           <ul>
@@ -90,7 +122,9 @@ const IconGroup = ({
             )}
             {user && (
               <li>
-                <a href={process.env.PUBLIC_URL + "/"} onClick={handleLogout}>Logout</a>
+                <a href={process.env.PUBLIC_URL + "/"} onClick={handleLogout}>
+                  Logout
+                </a>
               </li>
             )}
           </ul>
