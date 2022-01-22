@@ -72,15 +72,17 @@ const IconGroup = ({
           <Form form={form} onFinish={onSearch} className="contact-form-style">
             <Form.Item
               name="search"
+              style={{marginBottom: "10px"}}
               rules={[
                 {
                   required: true,
+                  message: "Type text for search",
                 },
               ]}
             >
               <Input placeholder="Search" type="text" />
             </Form.Item>
-            <Button style={{width: "100%", height: "40px"}} type="primary" htmlType="submit">
+            <Button style={{width: "100%", height: "40px", backgroundColor: "#a749ff"}} type="primary" htmlType="submit">
               <i style={{fontWeight: "bold", color: "white"}} className="pe-7s-search" />
             </Button>
           </Form>
