@@ -3,8 +3,8 @@ import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
 import { getDiscountPrice } from "../../helpers/product";
-import Rating from "./sub-components/ProductRating";
 import ProductModal from "./ProductModal";
+import { Rate } from "antd";
 
 const ProductGridListSingle = ({
   product,
@@ -16,7 +16,7 @@ const ProductGridListSingle = ({
   wishlistItem,
   compareItem,
   sliderClassName,
-  spaceBottomClass
+  spaceBottomClass,
 }) => {
   const [modalShow, setModalShow] = useState(false);
   const { addToast } = useToasts();
@@ -136,7 +136,7 @@ const ProductGridListSingle = ({
             </h3>
             {product.rating && product.rating > 0 ? (
               <div className="product-rating">
-                <Rating ratingValue={product.rating} />
+                <Rate value={product.rating} />
               </div>
             ) : (
               ""
@@ -215,7 +215,7 @@ const ProductGridListSingle = ({
                 {product.rating && product.rating > 0 ? (
                   <div className="rating-review">
                     <div className="product-list-rating">
-                      <Rating ratingValue={product.rating} />
+                      <Rate value={product.rating} />
                     </div>
                   </div>
                 ) : (
@@ -339,7 +339,7 @@ ProductGridListSingle.propTypes = {
   product: PropTypes.object,
   sliderClassName: PropTypes.string,
   spaceBottomClass: PropTypes.string,
-  wishlistItem: PropTypes.object
+  wishlistItem: PropTypes.object,
 };
 
 export default ProductGridListSingle;

@@ -3,7 +3,7 @@ import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
 import { getDiscountPrice } from "../../helpers/product";
-import Rating from "./sub-components/ProductRating";
+import { Rate } from "antd";
 import ProductModal from "./ProductModal";
 
 const ProductGridSingle = ({
@@ -136,7 +136,7 @@ const ProductGridSingle = ({
             </h3>
             {product.rating && product.rating > 0 ? (
               <div className="product-rating">
-                <Rating ratingValue={product.rating} />
+                <Rate value={product.rating} />
               </div>
             ) : (
               ""

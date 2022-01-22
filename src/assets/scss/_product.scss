@@ -2296,3 +2296,15 @@
         margin: 5% auto;
     }
 }
+
+.product-review-section {
+    .review{
+        height: 450px;
+        overflow-y: scroll;
+        padding: 16px;
+        border-radius: 4px;
+    }
+    .rating{
+        margin-left: 45px;
+    }
+}

@@ -68,10 +68,8 @@ const App = props => {
 
   /** Empy Cache when new version comes */
   useEffect(() => {
-    console.log("version", isLatestVersion);
     if(!isLatestVersion) {
       emptyCacheStorage();
-      console.log("Cache Cleared");
     }
   },[emptyCacheStorage, isLatestVersion])
   

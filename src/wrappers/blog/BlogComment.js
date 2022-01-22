@@ -57,13 +57,13 @@ const BlogComment = ({ commentLists, id }) => {
       return;
     }
     const payload = {
-      blogId: numericCode(6),
+      id: numericCode(6),
       comment: value,
       customerPhone: user.phone,
       customerName: user.name,
     };
     const newComments = [...loadCommentList];
-    newComments.push(payload);
+    newComments.unshift(payload);
     setLoadCommentList(newComments);
     try {
       setSubmitting(true);
@@ -78,7 +78,7 @@ const BlogComment = ({ commentLists, id }) => {
     async (comment) => {
       try {
         const payload = {
-          blogId: comment.id,
+          id: comment.id,
           isDeleted: true,
         };
         await api.post(`${Endpoints.BLOG}/comments/${id}`, { ...payload });

@@ -6,13 +6,13 @@ import { getProductCartQty } from "../../helpers/product";
 import { addToCart } from "../../redux/actions/cartActions";
 import { addToWishlist } from "../../redux/actions/wishlistActions";
 import { addToCompare } from "../../redux/actions/compareActions";
-import Rating from "./sub-components/ProductRating";
 import {
   FacebookShareButton,
   PinterestShareButton,
   TwitterShareButton,
   LineShareButton,
 } from "react-share";
+import { Rate } from "antd";
 
 const ProductDescriptionInfo = ({
   product,
@@ -64,7 +64,7 @@ const ProductDescriptionInfo = ({
       {product.rating && product.rating > 0 ? (
         <div className="pro-details-rating-wrap">
           <div className="pro-details-rating">
-            <Rating ratingValue={product.rating} />
+            <Rate value={product.rating} />
           </div>
         </div>
       ) : (

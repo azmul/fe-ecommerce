@@ -41,7 +41,7 @@ const ProductFixedImage = ({ location, product }) => {
 
         {/* product description tab */}
         <ProductDescriptionTab
-          spaceBottomClass="pb-90"
+          spaceBottomClass="pb-50"
           productFullDesc={product.fullDescription}
         />
 
