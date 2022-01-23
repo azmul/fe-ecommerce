@@ -5,7 +5,7 @@ import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import { connect } from "react-redux";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
-//import RelatedProductSlider from "../../wrappers/product/RelatedProductSlider";
+import RelatedProductSlider from "../../wrappers/product/RelatedProductSlider";
 import ProductDescriptionTab from "../../wrappers/product/ProductDescriptionTab";
 import ProductImageDescription from "../../wrappers/product/ProductImageDescription";
 
@@ -44,10 +44,10 @@ const Product = ({ location, product }) => {
         />
 
         {/* related product slider */}
-        {/* <RelatedProductSlider
+        <RelatedProductSlider
           spaceBottomClass="pb-95"
           category={product && product.category[0]}
-        /> */}
+        />
       </LayoutOne>
     </Fragment>
   );

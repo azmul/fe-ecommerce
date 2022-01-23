@@ -34,6 +34,7 @@ const Editor = ({ onChange, onSubmit, submitting, value }) => (
         loading={submitting}
         onClick={onSubmit}
         type="primary"
+        className="btn-hover"
       >
         Add Review
       </Button>
@@ -154,7 +155,7 @@ const ProductReview = ({ reviews }) => {
         )}
         {list && list.length > 0 && (
           <Row justify="center">
-            <Col className="review" md={15} sm={24} xs={24}>
+            <Col className={list.length > 5 ? "review" : ""} md={15} sm={24} xs={24}>
               {list.map((review) => (
                 <Comment
                   avatar={<Avatar icon={<UserOutlined />} />}
@@ -185,7 +186,7 @@ const ProductReview = ({ reviews }) => {
                           avatar={<Avatar icon={<UserOutlined />} />}
                           author={
                             <>
-                              By Admin (
+                              by Admin (
                               {capitalize(moment(review.ansTime).fromNow())})
                             </>
                           }

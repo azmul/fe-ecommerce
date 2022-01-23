@@ -121,7 +121,7 @@ const ProductQuestion = ({ questions }) => {
         )}
         {list && list.length > 0 && (
           <Row justify="center">
-            <Col className="question" md={15} sm={24} xs={24}>
+            <Col className={list.length > 5 ? "question" : ""}  md={15} sm={24} xs={24}>
               {list.map((question) => (
                 <Comment
                   avatar={<Avatar icon={<UserOutlined />} />}
@@ -152,7 +152,7 @@ const ProductQuestion = ({ questions }) => {
                           avatar={<Avatar icon={<UserOutlined />} />}
                           author={
                             <>
-                              By Admin (
+                              by Admin (
                               {capitalize(moment(question.ansTime).fromNow())})
                             </>
                           }

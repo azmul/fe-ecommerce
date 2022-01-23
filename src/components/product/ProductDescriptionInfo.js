@@ -70,6 +70,7 @@ const ProductDescriptionInfo = ({
       ) : (
         ""
       )}
+       <p className="pro--condition-details">{product && product.condition}</p>
       <div className="pro-details-list">
         <p>{product.shortDescription}</p>
       </div>

@@ -1568,7 +1568,7 @@ textarea:focus {
   background-color: $theme-color;
   color: #fff;
   right: 20px;
-  bottom: 60px;
+  bottom: 90px;
   text-align: center;
   overflow: hidden;
   border-radius: 50px;
@@ -1844,4 +1844,8 @@ a.default-btn {
   &:after {
     border-radius: 50px;
   }
+}
+
+.ant-btn-primary{
+  background-color: #a749ff;
 }
