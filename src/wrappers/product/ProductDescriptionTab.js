@@ -1,11 +1,12 @@
 import PropTypes from "prop-types";
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchReview, fetchQuestion } from "../../redux/actions/productActions";
 import ProductQuestion from "./Question";
 import ProductReview from "./Review";
+import { Descriptions, Row, Col } from "antd";
 
 const ProductDescriptionTab = ({ spaceBottomClass, product }) => {
   const dispatch = useDispatch();
@@ -28,7 +29,9 @@ const ProductDescriptionTab = ({ spaceBottomClass, product }) => {
                 <Nav.Link eventKey="productDescription">Description</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link eventKey="productReviews">Reviews({reviews ? reviews.reviews.length : 0})</Nav.Link>
+                <Nav.Link eventKey="productReviews">
+                  Reviews({reviews ? reviews.reviews.length : 0})
+                </Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link eventKey="productQuestions">
@@ -38,13 +41,47 @@ const ProductDescriptionTab = ({ spaceBottomClass, product }) => {
             </Nav>
             <Tab.Content className="description-review-bottom">
               <Tab.Pane eventKey="productDescription">
-                {product && product.fullDescription}
+                {product && (
+                  <>
+                    <Descriptions title={product.fullDescriptionTitle}>
+                      <Descriptions.Item>
+                        {product.fullDescription}
+                      </Descriptions.Item>
+                    </Descriptions>
+                    <br />
+                    <Row justify="space-between">
+                      {product.leftSide && product.leftSide.length > 0 && (
+                        <Col sm={11} xs={24}>
+                          <Descriptions column={1}>
+                            {product.leftSide.map((item) => (
+                              <Descriptions.Item label={<b>{item.title}</b>}>
+                                {item.data}
+                              </Descriptions.Item>
+                            ))}
+                          </Descriptions>
+                        </Col>
+                      )}
+
+                      {product.rightSide && product.rightSide.length > 0 && (
+                        <Col sm={11} xs={24}>
+                          <Descriptions column={1}>
+                            {product.rightSide.map((item) => (
+                              <Descriptions.Item label={<b>{item.title}</b>}>
+                                {item.data}
+                              </Descriptions.Item>
+                            ))}
+                          </Descriptions>
+                        </Col>
+                      )}
+                    </Row>
+                  </>
+                )}
               </Tab.Pane>
               <Tab.Pane eventKey="productReviews">
-                 <ProductReview reviews={reviews} />
+                <ProductReview reviews={reviews} />
               </Tab.Pane>
               <Tab.Pane eventKey="productQuestions">
-                 <ProductQuestion questions={questions}/>
+                <ProductQuestion questions={questions} />
               </Tab.Pane>
             </Tab.Content>
           </Tab.Container>
@@ -56,7 +93,7 @@ const ProductDescriptionTab = ({ spaceBottomClass, product }) => {
 
 ProductDescriptionTab.propTypes = {
   productFullDesc: PropTypes.string,
-  spaceBottomClass: PropTypes.string
+  spaceBottomClass: PropTypes.string,
 };
 
 export default ProductDescriptionTab;

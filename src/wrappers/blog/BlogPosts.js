@@ -28,6 +28,7 @@ const BlogPosts = ({blogs}) => {
           <div className="blog-content-2">
             <div className="blog-meta-2">
               <ul>
+                <li>by {blog.creator_name} </li>
                 <li>{moment(blog.createdAt).format('DD.MM.YYYY')}</li>
                 <li>
                     {blog.like_count} <i className="fa fa-comments-o" />
@@ -42,7 +43,7 @@ const BlogPosts = ({blogs}) => {
             <Paragraph ellipsis={{ rows: 4 }} >
               {blog.content}
             </Paragraph>
-            {blog && blog.product_url && <a rel="noopener noreferrer" target="_blank" href={blog && blog.product_url}>For Order Click Here</a>}
+            {blog && blog.product_url && <a className="for-order-section" rel="noopener noreferrer" target="_blank" href={blog && blog.product_url}>For Order Click Here</a>}
             <div className="blog-share-comment">
               <div className="blog-btn-2">
                 <Link to={`/blog-details/${blog._id}`} >

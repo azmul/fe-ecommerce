@@ -1,10 +1,12 @@
 import React, { Fragment } from "react";
 import moment from "moment";
+import { Descriptions, Comment, Avatar } from "antd";
 import {
   FacebookShareButton,
   PinterestShareButton,
   TwitterShareButton,
 } from "react-share";
+import { UserOutlined } from "@ant-design/icons";
 
 const BlogPost = ({ blog }) => {
   return (
@@ -16,23 +18,62 @@ const BlogPost = ({ blog }) => {
         <div className="blog-details-content">
           <div className="blog-meta-2">
             <ul>
+              <li>by {blog.creator_name} </li>
               <li>{moment(blog && blog.createdAt).format("DD.MM.YYYY")}</li>
               <li>
-                  {blog && blog.like_count} <i className="fa fa-comments-o" />
+                {blog && blog.like_count} <i className="fa fa-comments-o" />
               </li>
             </ul>
           </div>
           <h3>{blog && blog.title}</h3>
           <p>{blog && blog.content}</p>
-          {blog && blog.product_url && <a rel="noopener noreferrer" target="_blank" href={blog && blog.product_url}>For Order Click Here</a>}
+          <br />
+          {blog && blog.product_url && (
+            <a
+              className="for-order-section"
+              rel="noopener noreferrer"
+              target="_blank"
+              href={blog && blog.product_url}
+            >
+              For Order Click Here
+            </a>
+          )}
+          <br />
+          <br />
+          {blog &&
+            blog.content_items.length > 0 &&
+            blog.content_items.map((item) => (
+              <Descriptions title={item.title}>
+                <Descriptions.Item>{item.description}</Descriptions.Item>
+              </Descriptions>
+            ))}
+          {blog && blog.admin_message && (
+            <Comment
+              author={<>By Admin </>}
+              avatar={<Avatar icon={<UserOutlined />} />}
+              content={
+                <p>
+                  {blog.admin_message}.{" "}
+                  {blog && blog.product_url && (
+                    <a
+                      className="for-order-section"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      href={blog && blog.product_url}
+                    >
+                      Click For Order
+                    </a>
+                  )}
+                </p>
+              }
+            />
+          )}
         </div>
       </div>
       <div className="tag-share">
         <div className="dec-tag">
           <ul>
-            <li>
-              {blog && blog.category}
-            </li>
+            <li>{blog && blog.category}</li>
           </ul>
         </div>
         <div className="blog-share">
