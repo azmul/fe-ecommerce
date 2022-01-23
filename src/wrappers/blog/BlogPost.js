@@ -18,7 +18,7 @@ const BlogPost = ({ blog }) => {
         <div className="blog-details-content">
           <div className="blog-meta-2">
             <ul>
-              <li>by {blog.creator_name} </li>
+              <li>by {blog && blog.creator_name} </li>
               <li>{moment(blog && blog.createdAt).format("DD.MM.YYYY")}</li>
               <li>
                 {blog && blog.like_count} <i className="fa fa-comments-o" />
