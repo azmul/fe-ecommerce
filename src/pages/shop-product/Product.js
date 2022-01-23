@@ -32,7 +32,7 @@ const Product = ({ location, product }) => {
 
         {/* product description with image */}
         <ProductImageDescription
-          spaceTopClass="pt-100"
+          spaceTopClass="pt-50"
           spaceBottomClass="pb-100"
           product={product}
         />

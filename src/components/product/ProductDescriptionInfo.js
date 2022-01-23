@@ -70,7 +70,7 @@ const ProductDescriptionInfo = ({
       ) : (
         ""
       )}
-       <p className="pro--condition-details">{product && product.condition}</p>
+      <p className="pro--condition-details">{product && product.condition}</p>
       <div className="pro-details-list">
         <p>{product.shortDescription}</p>
       </div>
@@ -237,42 +237,6 @@ const ProductDescriptionInfo = ({
           </div>
         </div>
       )}
-      {product.category ? (
-        <div className="pro-details-meta">
-          <span>Categories :</span>
-          <ul>
-            {product.category.map((single, key) => {
-              return (
-                <li key={key}>
-                  <Link to={process.env.PUBLIC_URL + "/shop"}>
-                    {single}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      ) : (
-        ""
-      )}
-      {product.tag ? (
-        <div className="pro-details-meta">
-          <span>Tags :</span>
-          <ul>
-            {product.tag.map((single, key) => {
-              return (
-                <li key={key}>
-                  <Link to={process.env.PUBLIC_URL + "/shop"}>
-                    {single}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      ) : (
-        ""
-      )}
 
       <div className="pro-details-social">
         <ul>
@@ -310,6 +274,54 @@ const ProductDescriptionInfo = ({
           </li>
         </ul>
       </div>
+      <br />
+      {product && product.youtubeLink && (
+        <div>
+          <a
+            className="for-order-section"
+            rel="noopener noreferrer"
+            target="_blank"
+            href={product.youtubeLink}
+          >
+            Click Here
+          </a>
+          &nbsp; to see youtube video
+        </div>
+      )}
+      <br />
+      {product.tag ? (
+        <div className="pro-details-meta">
+          <span>Tags :</span>
+          <ul>
+            {product.tag.map((single, key) => {
+              return (
+                <li key={key}>
+                  <Link to={process.env.PUBLIC_URL + "/shop"}>{single}</Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ) : (
+        ""
+      )}
+
+      {product.category ? (
+        <div className="pro-details-meta">
+          <span>Categories :</span>
+          <ul>
+            {product.category.map((single, key) => {
+              return (
+                <li key={key}>
+                  <Link to={process.env.PUBLIC_URL + "/shop"}>{single}</Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

@@ -33,14 +33,14 @@ const ProductSlider = ({ location, product }) => {
 
         {/* product description with image */}
         <ProductImageDescriptionSlider
-          spaceTopClass="pt-100"
+          spaceTopClass="pt-40"
           spaceBottomClass="pb-100"
           product={product}
         />
 
         {/* product description tab */}
         <ProductDescriptionTab
-          spaceBottomClass="pb-50"
+          spaceBottomClass="pb-40"
           productFullDesc={product.fullDescription}
         />
 
