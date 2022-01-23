@@ -274,8 +274,10 @@ const ProductDescriptionInfo = ({
           </li>
         </ul>
       </div>
-      <br />
+     
       {product && product.youtubeLink && (
+        <>
+        <br />
         <div>
           <a
             className="for-order-section"
@@ -287,6 +289,7 @@ const ProductDescriptionInfo = ({
           </a>
           &nbsp; to see youtube video
         </div>
+        </>
       )}
       <br />
       {product.tag ? (
