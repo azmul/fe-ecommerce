@@ -44,10 +44,10 @@ const Product = ({ location, product }) => {
         />
 
         {/* related product slider */}
-        <RelatedProductSlider
+        {/* <RelatedProductSlider
           spaceBottomClass="pb-95"
           category={product && product.category[0]}
-        />
+        /> */}
       </LayoutOne>
     </Fragment>
   );
