@@ -41,6 +41,7 @@ const BlogPost = ({ blog }) => {
           <br />
           <br />
           {blog &&
+            blog.content_items &&
             blog.content_items.length > 0 &&
             blog.content_items.map((item) => (
               <Descriptions title={item.title}>
