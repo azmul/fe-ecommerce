@@ -110,91 +110,111 @@ const App = props => {
 
                 {/* Homepages */}
                 <Route
+                  exact
                   path={process.env.PUBLIC_URL + "/home-fashion"}
                   component={HomeFashion}
                 />
                 
                 {/* Shop pages */}
                 <Route
+                  exact
                   path={process.env.PUBLIC_URL + "/shop"}
                   component={ShopGridStandard}
                 />
                 <Route
+                exact
                   path={process.env.PUBLIC_URL + "/shop-grid-filter"}
                   component={ShopGridFilter}
                 />
                 <Route
+                exact
                   path={process.env.PUBLIC_URL + "/shop-grid-two-column"}
                   component={ShopGridTwoColumn}
                 />
                 <Route
+                exact
                   path={process.env.PUBLIC_URL + "/shop-grid-no-sidebar"}
                   component={ShopGridNoSidebar}
                 />
                 <Route
+                exact
                   path={process.env.PUBLIC_URL + "/shop-grid-full-width"}
                   component={ShopGridFullWidth}
                 />
                 <Route
+                exact
                   path={process.env.PUBLIC_URL + "/shop-grid-right-sidebar"}
                   component={ShopGridRightSidebar}
                 />
                 <Route
+                exact
                   path={process.env.PUBLIC_URL + "/shop-list-standard"}
                   component={ShopListStandard}
                 />
                 <Route
+                exact
                   path={process.env.PUBLIC_URL + "/shop-list-full-width"}
                   component={ShopListFullWidth}
                 />
                 <Route
+                exact
                   path={process.env.PUBLIC_URL + "/shop-list-two-column"}
                   component={ShopListTwoColumn}
                 />
 
                 {/* Shop product pages */}
                 <Route
+                exact
                   path={"/product/:id"}
                   render={routeProps => ( 
                     <Product {...routeProps} key={routeProps.match.params.id} />
                   )}
                 />
                 <Route
+                exact
                   path={process.env.PUBLIC_URL + "/product-tab-left/:id"}
                   component={ProductTabLeft}
                 />
                 <Route
+                exact
                   path={process.env.PUBLIC_URL + "/product-tab-right/:id"}
                   component={ProductTabRight}
                 />
                 <Route
+                exact
                   path={process.env.PUBLIC_URL + "/product-sticky/:id"}
                   component={ProductSticky}
                 />
                 <Route
+                exact
                   path={process.env.PUBLIC_URL + "/product-slider/:id"}
                   component={ProductSlider}
                 />
                 <Route
+                exact
                   path={process.env.PUBLIC_URL + "/product-fixed-image/:id"}
                   component={ProductFixedImage}
                 />
 
                 {/* Blog pages */}
                 <Route
+                exact
                   path={process.env.PUBLIC_URL + "/blog"}
                   component={BlogStandard}
                 />
                 <Route
+                exact
                   path={process.env.PUBLIC_URL + "/blog-no-sidebar"}
                   component={BlogNoSidebar}
                 />
                 <Route
+                exact
                   path={process.env.PUBLIC_URL + "/blog-right-sidebar"}
                   component={BlogRightSidebar}
                 />
                 <Route
-                  path={process.env.PUBLIC_URL + "/blog-details/:id"}
+                exact
+                  path={process.env.PUBLIC_URL + "/blog/:id"}
                   render={routeProps => ( 
                     <BlogDetailsStandard {...routeProps} key={routeProps.match.params.id} />
                   )}
@@ -202,40 +222,49 @@ const App = props => {
 
                 {/* Other pages */}
                 <Route
+                exact
                   path={process.env.PUBLIC_URL + "/about"}
                   component={About}
                 />
                 <Route
+                exact
                   path={process.env.PUBLIC_URL + "/contact"}
                   component={Contact}
                 />
                 <Route
+                exact
                   path={process.env.PUBLIC_URL + "/my-account"}
                   component={MyAccount}
                 />
                 <Route
+                exact
                   path={process.env.PUBLIC_URL + "/login-register"}
                   component={LoginRegister}
                 />
 
                 <Route
+                exact
                   path={process.env.PUBLIC_URL + "/cart"}
                   component={Cart}
                 />
                 <Route
+                exact
                   path={process.env.PUBLIC_URL + "/wishlist"}
                   component={Wishlist}
                 />
                 <Route
+                exact
                   path={process.env.PUBLIC_URL + "/compare"}
                   component={Compare}
                 />
                 <Route
+                exact
                   path={process.env.PUBLIC_URL + "/checkout"}
                   component={Checkout}
                 />
 
                 <Route
+                exact
                   path={process.env.PUBLIC_URL + "/not-found"}
                   component={NotFound}
                 />

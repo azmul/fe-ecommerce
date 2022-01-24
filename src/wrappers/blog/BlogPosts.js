@@ -18,7 +18,7 @@ const BlogPosts = ({blogs}) => {
       <div key={blog._id} className="col-lg-6 col-md-6 col-sm-12">
         <div className="blog-wrap-2 mb-30">
           <div className="blog-img-2">
-            <Link to={`/blog-details/${blog._id}`}>
+            <Link to={`/blog/${blog._id}`}>
               <img
                 src={blog.picture_url}
                 alt={blog.title}
@@ -36,7 +36,7 @@ const BlogPosts = ({blogs}) => {
               </ul>
             </div>
             <h4>
-              <Link to={`/blog-details/${blog._id}`}>
+              <Link to={`/blog/${blog._id}`}>
                 {blog.title}
               </Link>
             </h4>
@@ -46,7 +46,7 @@ const BlogPosts = ({blogs}) => {
             {blog && blog.product_url && <a className="for-order-section" rel="noopener noreferrer" target="_blank" href={blog && blog.product_url}>For Order Click Here</a>}
             <div className="blog-share-comment">
               <div className="blog-btn-2">
-                <Link to={`/blog-details/${blog._id}`} >
+                <Link to={`/blog/${blog._id}`} >
                   read more
                 </Link>
               </div>
@@ -55,17 +55,17 @@ const BlogPosts = ({blogs}) => {
                 <div className="share-social">
                   <ul>
                     <li>
-                      <FacebookShareButton className="facebook" url={`${window.location.href}/blog-details/${blog.id}`} quote={blog.title}>
+                      <FacebookShareButton className="facebook" url={`${window.location.href}/blog/${blog.id}`} quote={blog.title}>
                         <i className="fa fa-facebook" />
                       </FacebookShareButton>
                     </li>
                     <li>
-                    <TwitterShareButton className="twitter" url={`${window.location.href}/blog-details/${blog.id}`} quote={blog.title}>
+                    <TwitterShareButton className="twitter" url={`${window.location.href}/blog/${blog.id}`} quote={blog.title}>
                         <i className="fa fa-twitter" />
                       </TwitterShareButton>
                     </li>
                     <li>
-                    <PinterestShareButton className="instagram" url={`${window.location.href}/blog-details/${blog.id}`} quote={blog.title}>
+                    <PinterestShareButton className="instagram" url={`${window.location.href}/blog/${blog.id}`} quote={blog.title}>
                         <i className="fa fa-instagram" />
                       </PinterestShareButton>
                     </li>
