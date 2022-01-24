@@ -13,6 +13,8 @@ const BLOG = API + "/blog";
 const SETTING = API + "/setting";
 const QUESTION = API + "/question";
 const REVIEW = API + "/review";
+const TAG = API + "/tag";
+const CATEGORY = API + "/category";
 
 /**
  * Enum with all api endpoints
@@ -30,6 +32,8 @@ export const Endpoints = Object.freeze({
   SETTING: SETTING,
   QUESTION: QUESTION,
   REVIEW: REVIEW,
+  TAG: TAG,
+  CATEGORY: CATEGORY,
 });
 
 /**

@@ -7,7 +7,7 @@ import { multilanguage, loadLanguages } from "redux-multilanguage";
 import { connect } from "react-redux";
 import { BreadcrumbsProvider } from "react-breadcrumbs-dynamic";
 import { useDispatch } from 'react-redux'
-import { fetchProducts } from "./redux/actions/productActions";
+import { fetchProducts, fetchCollectionsProducts } from "./redux/actions/productActions";
 import { getSetting } from "./redux/actions/settingActions";
 import { useClearCacheCtx } from "react-clear-cache";
 
@@ -84,6 +84,7 @@ const App = props => {
     );
     dispatch(fetchProducts());
     dispatch(getSetting());
+    dispatch(fetchCollectionsProducts());
   },[dispatch]);
 
   return (
