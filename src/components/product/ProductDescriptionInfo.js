@@ -13,6 +13,8 @@ import {
   LineShareButton,
 } from "react-share";
 import { Rate } from "antd";
+import ModalVideo from "react-modal-video"
+import {Button} from "antd";
 
 const ProductDescriptionInfo = ({
   product,
@@ -28,6 +30,7 @@ const ProductDescriptionInfo = ({
   addToWishlist,
   addToCompare,
 }) => {
+  const [isOpen, setOpen] = useState(false);
   const [selectedProductColor, setSelectedProductColor] = useState(
     product.variation ? product.variation[0].color : ""
   );
@@ -278,16 +281,16 @@ const ProductDescriptionInfo = ({
       {product && product.youtubeLink && (
         <>
         <br />
+        <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={product.youtubeLink} onClose={() => setOpen(false)} />
         <div>
-          <a
+          <Button
             className="for-order-section"
-            rel="noopener noreferrer"
-            target="_blank"
-            href={product.youtubeLink}
+            type="link"
+            onClick={()=> setOpen(true)}
           >
             Click Here
-          </a>
-          &nbsp; to see youtube video
+          </Button>
+          to see youtube video
         </div>
         </>
       )}
