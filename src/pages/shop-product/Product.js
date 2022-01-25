@@ -1,18 +1,15 @@
 import PropTypes from "prop-types";
 import React, { Fragment } from "react";
 import MetaTags from "react-meta-tags";
-import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import { connect } from "react-redux";
 import LayoutOne from "../../layouts/LayoutOne";
-import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import ProductDescriptionTab from "../../wrappers/product/ProductDescriptionTab";
 import ProductImageDescription from "../../wrappers/product/ProductImageDescription";
 import RelatedProducts from "../../wrappers/product/RelatedProducts";
 import { getProducts } from "../../helpers/product";
 
 const Product = ({ location, product, products }) => {
-  const { pathname } = location;
-  
+
   const category = product && product.category ? product.category[0] : undefined;
   const filteredProducts = getProducts(products, category, "new", 1000)
 
@@ -26,13 +23,7 @@ const Product = ({ location, product, products }) => {
         />
       </MetaTags>
 
-      <BreadcrumbsItem to={"/"}>Home</BreadcrumbsItem>
-      <BreadcrumbsItem to={pathname}>Shop Product</BreadcrumbsItem>
-
       <LayoutOne headerTop="visible">
-        {/* breadcrumb */}
-        <Breadcrumb />
-
         {/* product description with image */}
         <ProductImageDescription
           spaceTopClass="pt-50"

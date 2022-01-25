@@ -3,7 +3,6 @@ import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
 import MetaTags from "react-meta-tags";
-import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import { connect } from "react-redux";
 import { getDiscountPrice } from "../../helpers/product";
 import {
@@ -14,7 +13,6 @@ import {
   removeAllFromCart
 } from "../../redux/actions/cartActions";
 import LayoutOne from "../../layouts/LayoutOne";
-import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 
 const Cart = ({
   location,
@@ -27,7 +25,6 @@ const Cart = ({
 }) => {
   const [quantityCount] = useState(1);
   const { addToast } = useToasts();
-  const { pathname } = location;
   let cartTotalPrice = 0;
 
   return (
@@ -40,14 +37,7 @@ const Cart = ({
         />
       </MetaTags>
 
-      <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
-      <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
-        Cart
-      </BreadcrumbsItem>
-
       <LayoutOne headerTop="visible">
-        {/* breadcrumb */}
-        <Breadcrumb />
         <div className="cart-main-area pt-90 pb-100">
           <div className="container">
             {cartItems && cartItems.length >= 1 ? (

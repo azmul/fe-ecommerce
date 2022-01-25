@@ -21,7 +21,7 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }) => {
       <nav>
         <ul>
           <li>
-            <Link to={process.env.PUBLIC_URL + "/collection"}>
+            <Link to={process.env.PUBLIC_URL + "/products"}>
               {" "}
               {strings["shop"]}
               {sidebarMenu ? (
@@ -49,7 +49,7 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }) => {
               <li>
                 <ul>
                   <li className="mega-menu-img">
-                    <Link to={process.env.PUBLIC_URL + "/collection"}>
+                    <Link to={process.env.PUBLIC_URL + "/products"}>
                       <img
                         src={banner}
                         alt=""
@@ -61,7 +61,7 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }) => {
             </ul>
           </li>
           <li>
-            <Link to={process.env.PUBLIC_URL + "/collection"}>
+            <Link to={process.env.PUBLIC_URL + "/products"}>
               Products
             </Link>
           </li>

@@ -1,9 +1,7 @@
 import PropTypes from "prop-types";
 import React, { Fragment, useState } from "react";
 import MetaTags from "react-meta-tags";
-import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import LayoutOne from "../../layouts/LayoutOne";
-import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import LocationMap from "../../components/contact/LocationMap";
 import { Form, Input, Button } from "antd";
 import * as contactApi from "../../api/contactApi";
@@ -12,7 +10,6 @@ import bdPhone from "@0devco/bd-phone-validator";
 import { useSelector } from "react-redux";
 
 const Contact = ({ location }) => {
-  const { pathname } = location;
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const setting = useSelector((state) => state.settingData.setting);
@@ -69,11 +66,7 @@ const Contact = ({ location }) => {
           content="Contact of flone Purchase your desire products."
         />
       </MetaTags>
-      <BreadcrumbsItem to={"/"}>Home</BreadcrumbsItem>
-      <BreadcrumbsItem to={pathname}>Contact</BreadcrumbsItem>
       <LayoutOne headerTop="visible">
-        {/* breadcrumb */}
-        <Breadcrumb />
         <div className="contact-area pt-50 pb-100">
           <div className="container">
             <div className="contact-map mb-10">

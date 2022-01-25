@@ -1,11 +1,9 @@
 import PropTypes from "prop-types";
 import React, { Fragment, useState } from "react";
 import MetaTags from "react-meta-tags";
-import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
 import LayoutOne from "../../layouts/LayoutOne";
-import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import { Form, Input, Button, Checkbox, message } from "antd";
 import { UserOutlined, PhoneOutlined, LockOutlined } from "@ant-design/icons";
 import bdPhone from '@0devco/bd-phone-validator'
@@ -15,7 +13,6 @@ import {FETCH_USER, USER_TOKEN} from "../../redux/actions/userActions";
 import { useHistory } from "react-router-dom";
 
 const LoginRegister = ({ location }) => {
-  const { pathname } = location;
   const [loginForm] = Form.useForm();
   const [registerForm] = Form.useForm();
   const [loading, setLoading] = useState(false);
@@ -122,13 +119,7 @@ const LoginRegister = ({ location }) => {
         <title>Kureghor | Login</title>
         <meta name="description" content="Purchase your desire products." />
       </MetaTags>
-      <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
-      <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
-        Login Register
-      </BreadcrumbsItem>
       <LayoutOne headerTop="visible">
-        {/* breadcrumb */}
-        <Breadcrumb />
         <div className="login-register-area pt-100 pb-100">
           <div className="container">
             <div className="row">

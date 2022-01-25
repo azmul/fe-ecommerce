@@ -71,7 +71,7 @@ const ShopSearch = lazy(() => import("./pages/shop/Search"));
 const CampaignPage = lazy(() => import("./pages/shop/Campaign"));
 const FlashPage = lazy(() => import("./pages/shop/Flash"));
 const MenuPage = lazy(() => import("./pages/shop/Menu"));
-const CollectionPage = lazy(() => import("./pages/shop/Collection"));
+const ProductsPage = lazy(() => import("./pages/shop/Collection"));
 
 
 const App = (props) => {
@@ -132,8 +132,8 @@ const App = (props) => {
                 {/* Shop pages */}
                 <Route
                   exact
-                  path={process.env.PUBLIC_URL + "/collection"}
-                  component={CollectionPage}
+                  path={process.env.PUBLIC_URL + "/products"}
+                  component={ProductsPage}
                 />
                 <Route
                   exact

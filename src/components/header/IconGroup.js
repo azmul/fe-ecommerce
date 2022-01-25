@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import MenuCart from "./sub-components/MenuCart";
@@ -19,6 +19,7 @@ const IconGroup = ({
   removeFromCart,
   iconWhiteClass,
 }) => {
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.userData.user);
@@ -48,12 +49,16 @@ const IconGroup = ({
 
   const onSearch = (values) => {
     if(values && values.search) {
+      setLoading(true);
       dispatch({
         type: SEARCH_STRING,
         payload: values.search,
       });
       dispatch(fetchSearchProducts(values.search));
       history.push("/search");
+      setTimeout(() => {
+        setLoading(false);
+      },1500)
     } else {
       return;
     }
@@ -81,7 +86,7 @@ const IconGroup = ({
             >
               <Input placeholder="Search" type="text" />
             </Form.Item>
-            <Button style={{width: "100%", height: "40px", backgroundColor: "#a749ff"}} type="primary" htmlType="submit">
+            <Button loading={loading} style={{width: "100%", height: "40px", backgroundColor: "#a749ff"}} type="primary" htmlType="submit">
               <i style={{fontWeight: "bold", color: "white"}} className="pe-7s-search" />
             </Button>
           </Form>

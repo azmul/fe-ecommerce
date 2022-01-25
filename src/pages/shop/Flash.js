@@ -2,10 +2,8 @@ import PropTypes from "prop-types";
 import React, { Fragment, useState, useEffect } from "react";
 import MetaTags from "react-meta-tags";
 import Paginator from "react-hooks-paginator";
-import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import { getSortedProducts } from "../../helpers/product";
 import LayoutOne from "../../layouts/LayoutOne";
-import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import ShopTopbarFilter from "../../wrappers/product/ShopTopbarFilter";
 import ShopProducts from "../../wrappers/product/ShopProducts";
 import { fetchFlashProducts } from "../../redux/actions/productActions";
@@ -26,7 +24,6 @@ const Flash = ({ location }) => {
   const products = useSelector((state) => state.productData.flashProducts);
 
   const pageLimit = 30;
-  const { pathname } = location;
 
   const getLayout = (layout) => {
     setLayout(layout);
@@ -68,15 +65,7 @@ const Flash = ({ location }) => {
         />
       </MetaTags>
 
-      <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
-      <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
-        Flash Sell
-      </BreadcrumbsItem>
-
       <LayoutOne headerTop="visible">
-        {/* breadcrumb */}
-        <Breadcrumb />
-
         <div className="shop-area pt-50 pb-100">
           <div className="container">
             <div className="row">

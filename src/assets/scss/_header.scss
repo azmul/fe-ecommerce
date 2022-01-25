@@ -8,7 +8,7 @@
 	animation: 700ms ease-in-out 0s normal none 1 running fadeInDown;
 	background-color: #fff;
 	border-bottom: 0 solid #4a90e2;
-	box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	position: fixed;
 	top: 0;
 	width: 100%;
@@ -70,7 +70,7 @@
     }
 }
 .logo {
-	margin-top: 32px;
+	margin-top: 5px;
     @media #{$md-layout}{
         margin-top: 0px;
     }
@@ -2233,4 +2233,7 @@
         font-size: 18px !important;
         font-weight: bold !important;
     }
+}
+.sticky-bar {
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
 }
