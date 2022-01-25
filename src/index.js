@@ -8,6 +8,7 @@ import "./assets/scss/style.scss";
 import * as serviceWorker from "./serviceWorker";
 import store from "./redux/store";
 import { ClearCacheProvider } from 'react-clear-cache';
+import 'react-multi-carousel/lib/styles.css';
 
 ReactDOM.render(
   <ClearCacheProvider duration={5000}>

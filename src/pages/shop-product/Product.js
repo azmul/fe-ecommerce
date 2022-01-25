@@ -5,12 +5,17 @@ import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import { connect } from "react-redux";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
-//import RelatedProductSlider from "../../wrappers/product/RelatedProductSlider";
 import ProductDescriptionTab from "../../wrappers/product/ProductDescriptionTab";
 import ProductImageDescription from "../../wrappers/product/ProductImageDescription";
+import RelatedProducts from "../../wrappers/product/RelatedProducts";
+import { getProducts } from "../../helpers/product";
 
-const Product = ({ location, product }) => {
+const Product = ({ location, product, products }) => {
   const { pathname } = location;
+  
+  const category = product && product.category ? product.category[0] : undefined;
+  const filteredProducts = getProducts(products, category, "new", 1000)
+
   return (
     <Fragment>
       <MetaTags>
@@ -22,9 +27,7 @@ const Product = ({ location, product }) => {
       </MetaTags>
 
       <BreadcrumbsItem to={"/"}>Home</BreadcrumbsItem>
-      <BreadcrumbsItem to={pathname}>
-        Shop Product
-      </BreadcrumbsItem>
+      <BreadcrumbsItem to={pathname}>Shop Product</BreadcrumbsItem>
 
       <LayoutOne headerTop="visible">
         {/* breadcrumb */}
@@ -33,21 +36,16 @@ const Product = ({ location, product }) => {
         {/* product description with image */}
         <ProductImageDescription
           spaceTopClass="pt-50"
-          spaceBottomClass="pb-100"
+          spaceBottomClass="pb-30"
           product={product}
         />
 
+        {category && filteredProducts.length > 0 && <RelatedProducts products={filteredProducts} /> }
+        <br />
+        <br />
         {/* product description tab */}
-        <ProductDescriptionTab
-          spaceBottomClass="pb-50"
-          product={product}
-        />
+        <ProductDescriptionTab spaceBottomClass="pb-50" product={product} />
 
-        {/* related product slider */}
-        {/* <RelatedProductSlider
-          spaceBottomClass="pb-95"
-          category={product && product.category[0]}
-        /> */}
       </LayoutOne>
     </Fragment>
   );
@@ -55,15 +53,17 @@ const Product = ({ location, product }) => {
 
 Product.propTypes = {
   location: PropTypes.object,
-  product: PropTypes.object
+  product: PropTypes.object,
+  products: PropTypes.array,
 };
 
 const mapStateToProps = (state, ownProps) => {
   const productId = ownProps.match.params.id;
   return {
     product: state.productData.products.filter(
-      single => single.id === Number(productId)
-    )[0]
+      (single) => single.id === Number(productId)
+    )[0],
+    products: state.productData.products,
   };
 };
 

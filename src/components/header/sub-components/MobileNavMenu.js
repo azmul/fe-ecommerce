@@ -4,161 +4,63 @@ import { Link } from "react-router-dom";
 import { multilanguage } from "redux-multilanguage";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import {FETCH_USER, USER_TOKEN} from "../../../redux/actions/userActions";
+import { FETCH_USER, USER_TOKEN } from "../../../redux/actions/userActions";
 
 const MobileNavMenu = ({ strings }) => {
-  
   const dispatch = useDispatch();
   const user = useSelector((state) => state.userData.user);
   const setting = useSelector((state) => state.settingData.setting);
+  const categories = useSelector((state) => state.commonData.categories);
 
   const handleLogout = () => {
     dispatch({
       type: FETCH_USER,
-      payload: null
+      payload: null,
     });
     dispatch({
       type: USER_TOKEN,
-      payload: false
+      payload: false,
     });
-  }
+  };
   return (
     <nav className="offcanvas-navigation" id="offcanvas-navigation">
-       {user && user.picture_url ? <img width="20" height="20" src={user.picture_url} alt="PROFILE" />: <i className="pe-7s-user-female" />}
+      {user && user.picture_url ? (
+        <img width="20" height="20" src={user.picture_url} alt="PROFILE" />
+      ) : (
+        <i className="pe-7s-user-female" />
+      )}
 
       <ul>
         <li className="menu-item-has-children">
-          <Link to={process.env.PUBLIC_URL + "/shop"}>
-            {strings["shop"]}
-          </Link>
           <ul className="sub-menu">
-            <li className="menu-item-has-children">
-              <Link to={process.env.PUBLIC_URL + "/shop"}>
-                {strings["shop_layout"]}
-              </Link>
-              <ul className="sub-menu">
-                <li>
-                  <Link to={process.env.PUBLIC_URL + "/shop"}>
-                    {strings["shop_grid_standard"]}
+            {categories &&
+              categories.length > 0 &&
+              categories.map((category) => (
+                <li key={category}>
+                  <Link to={process.env.PUBLIC_URL + "/menu?item=" + category}>
+                    {category} Items
                   </Link>
                 </li>
-                <li>
-                  <Link to={process.env.PUBLIC_URL + "/shop-grid-filter"}>
-                    {strings["shop_grid_filter"]}
-                  </Link>
-                </li>
-                <li>
-                  <Link to={process.env.PUBLIC_URL + "/shop-grid-two-column"}>
-                    {strings["shop_grid_two_column"]}
-                  </Link>
-                </li>
-                <li>
-                  <Link to={process.env.PUBLIC_URL + "/shop-grid-no-sidebar"}>
-                    {strings["shop_grid_no_sidebar"]}
-                  </Link>
-                </li>
-                <li>
-                  <Link to={process.env.PUBLIC_URL + "/shop-grid-full-width"}>
-                    {strings["shop_grid_full_width"]}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to={process.env.PUBLIC_URL + "/shop-grid-right-sidebar"}
-                  >
-                    {strings["shop_grid_right_sidebar"]}
-                  </Link>
-                </li>
-                <li>
-                  <Link to={process.env.PUBLIC_URL + "/shop-list-standard"}>
-                    {strings["shop_list_standard"]}
-                  </Link>
-                </li>
-                <li>
-                  <Link to={process.env.PUBLIC_URL + "/shop-list-full-width"}>
-                    {strings["shop_list_full_width"]}
-                  </Link>
-                </li>
-                <li>
-                  <Link to={process.env.PUBLIC_URL + "/shop-list-two-column"}>
-                    {strings["shop_list_two_column"]}
-                  </Link>
-                </li>
-              </ul>
-            </li>
-            <li className="menu-item-has-children">
-              <Link to={process.env.PUBLIC_URL + "/product/1"}>
-                {strings["product_details"]}
-              </Link>
-              <ul className="sub-menu">
-                <li>
-                  <Link to={process.env.PUBLIC_URL + "/product/1"}>
-                    {strings["product_tab_bottom"]}
-                  </Link>
-                </li>
-                <li>
-                  <Link to={process.env.PUBLIC_URL + "/product-tab-left/1"}>
-                    {strings["product_tab_left"]}
-                  </Link>
-                </li>
-                <li>
-                  <Link to={process.env.PUBLIC_URL + "/product-tab-right/1"}>
-                    {strings["product_tab_right"]}
-                  </Link>
-                </li>
-                <li>
-                  <Link to={process.env.PUBLIC_URL + "/product-sticky/1"}>
-                    {strings["product_sticky"]}
-                  </Link>
-                </li>
-                <li>
-                  <Link to={process.env.PUBLIC_URL + "/product-slider/1"}>
-                    {strings["product_slider"]}
-                  </Link>
-                </li>
-                <li>
-                  <Link to={process.env.PUBLIC_URL + "/product-fixed-image/1"}>
-                    {strings["product_fixed_image"]}
-                  </Link>
-                </li>
-                <li>
-                  <Link to={process.env.PUBLIC_URL + "/product/1"}>
-                    {strings["product_simple"]}
-                  </Link>
-                </li>
-                <li>
-                  <Link to={process.env.PUBLIC_URL + "/product/1"}>
-                    {strings["product_variation"]}
-                  </Link>
-                </li>
-                <li>
-                  <Link to={process.env.PUBLIC_URL + "/product/1"}>
-                    {strings["product_affiliate"]}
-                  </Link>
-                </li>
-              </ul>
-            </li>
+              ))}
           </ul>
         </li>
         <li>
-          <Link to={process.env.PUBLIC_URL + "/shop"}>
+          <Link to={process.env.PUBLIC_URL + "/collection"}>
             {strings["collection"]}
           </Link>
         </li>
-          {setting && setting.is_campaign_sell && (
-            <li className="campaign-products">
+        {setting && setting.is_campaign_sell && (
+          <li className="campaign-products">
             <Link to={"/campaign"}>Campaign</Link>
-            </li>
-          )}
-          {setting && setting.is_flash_sell && (
-            <li className="flash-products">
-           <Link to={"/flash"}>Flash Sell</Link>
-            </li>
-          )}
+          </li>
+        )}
+        {setting && setting.is_flash_sell && (
+          <li className="flash-products">
+            <Link to={"/flash"}>Flash Sell</Link>
+          </li>
+        )}
         <li className="menu-item-has-children">
-          <Link to={process.env.PUBLIC_URL + "/blog"}>
-            {strings["blog"]}
-          </Link>
+          <Link to={process.env.PUBLIC_URL + "/blog"}>{strings["blog"]}</Link>
         </li>
         <li>
           <Link to={process.env.PUBLIC_URL + "/contact"}>
@@ -193,7 +95,9 @@ const MobileNavMenu = ({ strings }) => {
             )}
             {user && (
               <li>
-                <a href={process.env.PUBLIC_URL + "/"} onClick={handleLogout}>Logout</a>
+                <a href={process.env.PUBLIC_URL + "/"} onClick={handleLogout}>
+                  Logout
+                </a>
               </li>
             )}
           </ul>
@@ -204,7 +108,7 @@ const MobileNavMenu = ({ strings }) => {
 };
 
 MobileNavMenu.propTypes = {
-  strings: PropTypes.object
+  strings: PropTypes.object,
 };
 
 export default multilanguage(MobileNavMenu);

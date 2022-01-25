@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { multilanguage } from "redux-multilanguage";
 import { useSelector } from "react-redux";
 import { ThunderboltOutlined, CrownOutlined } from "@ant-design/icons";
+import banner from "../../assets/img/nice-banner.png";
 
 const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }) => {
   const setting = useSelector((state) => state.settingData.setting);
@@ -20,7 +21,7 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }) => {
       <nav>
         <ul>
           <li>
-            <Link to={process.env.PUBLIC_URL + "/shop"}>
+            <a href="javascript:void(0)">
               {" "}
               {strings["shop"]}
               {sidebarMenu ? (
@@ -30,15 +31,10 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }) => {
               ) : (
                 <i className="fa fa-angle-down" />
               )}
-            </Link>
+            </a>
             <ul className="mega-menu">
               <li>
                 <ul>
-                  <li className="mega-menu-title">
-                    <Link to={process.env.PUBLIC_URL + "/shop"}>
-                      {strings["shop_items"]}
-                    </Link>
-                  </li>
                   {categories &&
                     categories.length > 0 &&
                     categories.map((category) => (
@@ -53,12 +49,9 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }) => {
               <li>
                 <ul>
                   <li className="mega-menu-img">
-                    <Link to={process.env.PUBLIC_URL + "/shop"}>
+                    <Link to={process.env.PUBLIC_URL + "/collection"}>
                       <img
-                        src={
-                          process.env.PUBLIC_URL +
-                          "/assets/img/banner/banner-12.png"
-                        }
+                        src={banner}
                         alt=""
                       />
                     </Link>
@@ -68,7 +61,7 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }) => {
             </ul>
           </li>
           <li>
-            <Link to={process.env.PUBLIC_URL + "/shop"}>
+            <Link to={process.env.PUBLIC_URL + "/collection"}>
               {strings["collection"]}
             </Link>
           </li>

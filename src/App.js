@@ -71,6 +71,8 @@ const ShopSearch = lazy(() => import("./pages/shop/Search"));
 const CampaignPage = lazy(() => import("./pages/shop/Campaign"));
 const FlashPage = lazy(() => import("./pages/shop/Flash"));
 const MenuPage = lazy(() => import("./pages/shop/Menu"));
+const CollectionPage = lazy(() => import("./pages/shop/Collection"));
+
 
 const App = (props) => {
   const dispatch = useDispatch();
@@ -130,7 +132,7 @@ const App = (props) => {
                 {/* Shop pages */}
                 <Route
                   exact
-                  path={process.env.PUBLIC_URL + "/shop"}
+                  path={process.env.PUBLIC_URL + "/collection"}
                   component={ShopGridStandard}
                 />
                 <Route

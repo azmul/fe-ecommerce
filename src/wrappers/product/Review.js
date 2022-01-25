@@ -158,6 +158,7 @@ const ProductReview = ({ reviews }) => {
             <Col className={list.length > 5 ? "review" : ""} md={15} sm={24} xs={24}>
               {list.map((review) => (
                 <Comment
+                key={review.id}
                   avatar={<Avatar icon={<UserOutlined />} />}
                   author={
                     <>
