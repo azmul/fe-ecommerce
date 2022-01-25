@@ -1,7 +1,10 @@
-import {Endpoints} from "../../api/apiConst";
+import { Endpoints } from "../../api/apiConst";
 import { api } from "../../api/apiHelper";
 
 export const FETCH_HOME_PRODUCTS = "FETCH_HOME_PRODUCTS";
+export const FETCH_SEARCH_PRODUCTS = "FETCH_SEARCH_PRODUCTS";
+export const FETCH_CAMPAIGN_PRODUCTS = "FETCH_CAMPAIGN_PRODUCTS";
+export const FETCH_FLASH_PRODUCTS = "FETCH_FLASH_PRODUCTS";
 export const FETCH_COLLECTIONS_PRODUCTS = "FETCH_COLLECTIONS_PRODUCTS";
 export const FETCH_REVIEW = "FETCH_REVIEW";
 export const FETCH_QUESTION = "FETCH_QUESTION";
@@ -13,9 +16,54 @@ export const fetchProducts = () => {
       const response = await api.get(`${Endpoints.PRODUCTS}/home`);
       dispatch({
         type: FETCH_HOME_PRODUCTS,
-        payload: response.data.data
+        payload: response.data.data,
       });
-    } finally {}
+    } finally {
+    }
+  };
+};
+
+// fetch flash products
+export const fetchFlashProducts = (name) => {
+  return async (dispatch) => {
+    try {
+      const response = await api.get(`${Endpoints.PRODUCTS}/flash`);
+      dispatch({
+        type: FETCH_FLASH_PRODUCTS,
+        payload: response.data.data,
+      });
+    } finally {
+    }
+  };
+};
+
+// fetch campaign products
+export const fetchCampaignProducts = (name) => {
+  return async (dispatch) => {
+    try {
+      const response = await api.get(`${Endpoints.PRODUCTS}/campaign`);
+      dispatch({
+        type: FETCH_CAMPAIGN_PRODUCTS,
+        payload: response.data.data,
+      });
+    } finally {
+    }
+  };
+};
+
+// fetch search products
+export const fetchSearchProducts = (name) => {
+  return async (dispatch) => {
+    try {
+      const response = await api.get(`${Endpoints.PRODUCTS}`, {
+        params: { name },
+      });
+      dispatch({
+        type: FETCH_SEARCH_PRODUCTS,
+        payload: response.data.data,
+      });
+    } finally {
+    }
   };
 };
 
@@ -26,9 +74,10 @@ export const fetchCollectionsProducts = () => {
       const response = await api.get(`${Endpoints.PRODUCTS}/collection`);
       dispatch({
         type: FETCH_COLLECTIONS_PRODUCTS,
-        payload: response.data.data
+        payload: response.data.data,
       });
-    } finally {}
+    } finally {
+    }
   };
 };
 
@@ -39,9 +88,10 @@ export const fetchReview = (id) => {
       const response = await api.get(`${Endpoints.REVIEW}/product/${id}`);
       dispatch({
         type: FETCH_REVIEW,
-        payload: response.data
+        payload: response.data,
       });
-    } finally {}
+    } finally {
+    }
   };
 };
 
@@ -52,8 +102,9 @@ export const fetchQuestion = (id) => {
       const response = await api.get(`${Endpoints.QUESTION}/product/${id}`);
       dispatch({
         type: FETCH_QUESTION,
-        payload: response.data
+        payload: response.data,
       });
-    } finally {}
+    } finally {
+    }
   };
 };

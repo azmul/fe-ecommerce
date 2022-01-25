@@ -6,8 +6,10 @@ import MenuCart from "./sub-components/MenuCart";
 import { removeFromCart } from "../../redux/actions/cartActions";
 import { useSelector, useDispatch } from "react-redux";
 import { FETCH_USER, USER_TOKEN } from "../../redux/actions/userActions";
+import { SEARCH_STRING } from "../../redux/actions/commonActions";
 import { Form, Input, Button } from "antd";
 import { useHistory } from "react-router-dom";
+import { fetchSearchProducts } from "../../redux/actions/productActions";
 
 const IconGroup = ({
   currency,
@@ -46,18 +48,15 @@ const IconGroup = ({
 
   const onSearch = (values) => {
     if(values && values.search) {
-      form.setFields([
-        {
-          name: "search",
-          value: undefined,
-          errors: undefined,
-        },
-      ]);
-      history.push("/shop");
+      dispatch({
+        type: SEARCH_STRING,
+        payload: values.search,
+      });
+      dispatch(fetchSearchProducts(values.search));
+      history.push("/search");
     } else {
       return;
     }
-    
   };
 
   return (

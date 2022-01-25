@@ -10,6 +10,7 @@ const MobileNavMenu = ({ strings }) => {
   
   const dispatch = useDispatch();
   const user = useSelector((state) => state.userData.user);
+  const setting = useSelector((state) => state.settingData.setting);
 
   const handleLogout = () => {
     dispatch({
@@ -144,33 +145,20 @@ const MobileNavMenu = ({ strings }) => {
             {strings["collection"]}
           </Link>
         </li>
-       
+          {setting && setting.is_campaign_sell && (
+            <li className="campaign-products">
+            <Link to={"/campaign"}>Campaign</Link>
+            </li>
+          )}
+          {setting && setting.is_flash_sell && (
+            <li className="flash-products">
+           <Link to={"/flash"}>Flash Sell</Link>
+            </li>
+          )}
         <li className="menu-item-has-children">
           <Link to={process.env.PUBLIC_URL + "/blog"}>
             {strings["blog"]}
           </Link>
-          <ul className="sub-menu">
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/blog"}>
-                {strings["blog"]}
-              </Link>
-            </li>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/blog-no-sidebar"}>
-                {strings["blog_no_sidebar"]}
-              </Link>
-            </li>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/blog-right-sidebar"}>
-                {strings["blog_right_sidebar"]}
-              </Link>
-            </li>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/blog-details-standard"}>
-                {strings["blog_details_standard"]}
-              </Link>
-            </li>
-          </ul>
         </li>
         <li>
           <Link to={process.env.PUBLIC_URL + "/contact"}>

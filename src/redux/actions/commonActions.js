@@ -3,6 +3,7 @@ import { api } from "../../api/apiHelper";
 
 export const FETCH_TAGS = "FETCH_TGAS";
 export const FETCH_CATEGORIES = "FETCH_CATEGORIES";
+export const SEARCH_STRING = "SEARCH_STRING";
 
 // fetch products
 export const fetchCategories = () => {
@@ -29,5 +30,15 @@ export const fetchTags = (id) => {
         payload: tags
       });
     } finally {}
+  };
+};
+
+// fetch reviews
+export const search = (searchString) => {
+  return async (dispatch) => {
+    dispatch({
+      type: SEARCH_STRING,
+      payload: searchString
+    });
   };
 };

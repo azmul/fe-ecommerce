@@ -6,8 +6,11 @@ import { ToastProvider } from "react-toast-notifications";
 import { multilanguage, loadLanguages } from "redux-multilanguage";
 import { connect } from "react-redux";
 import { BreadcrumbsProvider } from "react-breadcrumbs-dynamic";
-import { useDispatch } from 'react-redux'
-import { fetchProducts, fetchCollectionsProducts } from "./redux/actions/productActions";
+import { useDispatch } from "react-redux";
+import {
+  fetchProducts,
+  fetchCollectionsProducts,
+} from "./redux/actions/productActions";
 import { getSetting } from "./redux/actions/settingActions";
 import { useClearCacheCtx } from "react-clear-cache";
 
@@ -62,30 +65,35 @@ const Checkout = lazy(() => import("./pages/other/Checkout"));
 
 const NotFound = lazy(() => import("./pages/other/NotFound"));
 
-const App = props => {
+// New pages
+const ShopSearch = lazy(() => import("./pages/shop/Search"));
+const CampaignPage = lazy(() => import("./pages/shop/Campaign"));
+const FlashPage = lazy(() => import("./pages/shop/Flash"));
+
+const App = (props) => {
   const dispatch = useDispatch();
   const { isLatestVersion, emptyCacheStorage } = useClearCacheCtx();
 
   /** Empy Cache when new version comes */
   useEffect(() => {
-    if(!isLatestVersion) {
+    if (!isLatestVersion) {
       emptyCacheStorage();
     }
-  },[emptyCacheStorage, isLatestVersion])
-  
+  }, [emptyCacheStorage, isLatestVersion]);
+
   useEffect(() => {
     dispatch(
       loadLanguages({
         languages: {
           en: require("./translations/english.json"),
-          bn: require("./translations/bangla.json")
-        }
+          bn: require("./translations/bangla.json"),
+        },
       })
     );
     dispatch(fetchProducts());
     dispatch(getSetting());
     dispatch(fetchCollectionsProducts());
-  },[dispatch]);
+  }, [dispatch]);
 
   return (
     <ToastProvider placement="bottom-left">
@@ -115,7 +123,7 @@ const App = props => {
                   path={process.env.PUBLIC_URL + "/home-fashion"}
                   component={HomeFashion}
                 />
-                
+
                 {/* Shop pages */}
                 <Route
                   exact
@@ -123,149 +131,167 @@ const App = props => {
                   component={ShopGridStandard}
                 />
                 <Route
-                exact
+                  exact
                   path={process.env.PUBLIC_URL + "/shop-grid-filter"}
                   component={ShopGridFilter}
                 />
                 <Route
-                exact
+                  exact
+                  path={process.env.PUBLIC_URL + "/search"}
+                  component={ShopSearch}
+                />
+                <Route
+                  exact
+                  path={process.env.PUBLIC_URL + "/campaign"}
+                  component={CampaignPage}
+                />
+                 <Route
+                  exact
+                  path={process.env.PUBLIC_URL + "/flash"}
+                  component={FlashPage}
+                />
+                <Route
+                  exact
                   path={process.env.PUBLIC_URL + "/shop-grid-two-column"}
                   component={ShopGridTwoColumn}
                 />
                 <Route
-                exact
+                  exact
                   path={process.env.PUBLIC_URL + "/shop-grid-no-sidebar"}
                   component={ShopGridNoSidebar}
                 />
                 <Route
-                exact
+                  exact
                   path={process.env.PUBLIC_URL + "/shop-grid-full-width"}
                   component={ShopGridFullWidth}
                 />
                 <Route
-                exact
+                  exact
                   path={process.env.PUBLIC_URL + "/shop-grid-right-sidebar"}
                   component={ShopGridRightSidebar}
                 />
                 <Route
-                exact
+                  exact
                   path={process.env.PUBLIC_URL + "/shop-list-standard"}
                   component={ShopListStandard}
                 />
                 <Route
-                exact
+                  exact
                   path={process.env.PUBLIC_URL + "/shop-list-full-width"}
                   component={ShopListFullWidth}
                 />
                 <Route
-                exact
+                  exact
                   path={process.env.PUBLIC_URL + "/shop-list-two-column"}
                   component={ShopListTwoColumn}
                 />
 
                 {/* Shop product pages */}
                 <Route
-                exact
+                  exact
                   path={"/product/:id"}
-                  render={routeProps => ( 
+                  render={(routeProps) => (
                     <Product {...routeProps} key={routeProps.match.params.id} />
                   )}
                 />
                 <Route
-                exact
+                  exact
                   path={process.env.PUBLIC_URL + "/product-tab-left/:id"}
                   component={ProductTabLeft}
                 />
                 <Route
-                exact
+                  exact
                   path={process.env.PUBLIC_URL + "/product-tab-right/:id"}
                   component={ProductTabRight}
                 />
                 <Route
-                exact
+                  exact
                   path={process.env.PUBLIC_URL + "/product-sticky/:id"}
                   component={ProductSticky}
                 />
                 <Route
-                exact
+                  exact
                   path={process.env.PUBLIC_URL + "/product-slider/:id"}
                   component={ProductSlider}
                 />
                 <Route
-                exact
+                  exact
                   path={process.env.PUBLIC_URL + "/product-fixed-image/:id"}
                   component={ProductFixedImage}
                 />
 
                 {/* Blog pages */}
                 <Route
-                exact
+                  exact
                   path={process.env.PUBLIC_URL + "/blog"}
                   component={BlogStandard}
                 />
                 <Route
-                exact
+                  exact
                   path={process.env.PUBLIC_URL + "/blog-no-sidebar"}
                   component={BlogNoSidebar}
                 />
                 <Route
-                exact
+                  exact
                   path={process.env.PUBLIC_URL + "/blog-right-sidebar"}
                   component={BlogRightSidebar}
                 />
                 <Route
-                exact
+                  exact
                   path={process.env.PUBLIC_URL + "/blog/:id"}
-                  render={routeProps => ( 
-                    <BlogDetailsStandard {...routeProps} key={routeProps.match.params.id} />
+                  render={(routeProps) => (
+                    <BlogDetailsStandard
+                      {...routeProps}
+                      key={routeProps.match.params.id}
+                    />
                   )}
                 />
 
                 {/* Other pages */}
                 <Route
-                exact
+                  exact
                   path={process.env.PUBLIC_URL + "/about"}
                   component={About}
                 />
                 <Route
-                exact
+                  exact
                   path={process.env.PUBLIC_URL + "/contact"}
                   component={Contact}
                 />
                 <Route
-                exact
+                  exact
                   path={process.env.PUBLIC_URL + "/my-account"}
                   component={MyAccount}
                 />
                 <Route
-                exact
+                  exact
                   path={process.env.PUBLIC_URL + "/login-register"}
                   component={LoginRegister}
                 />
 
                 <Route
-                exact
+                  exact
                   path={process.env.PUBLIC_URL + "/cart"}
                   component={Cart}
                 />
                 <Route
-                exact
+                  exact
                   path={process.env.PUBLIC_URL + "/wishlist"}
                   component={Wishlist}
                 />
                 <Route
-                exact
+                  exact
                   path={process.env.PUBLIC_URL + "/compare"}
                   component={Compare}
                 />
                 <Route
-                exact
+                  exact
                   path={process.env.PUBLIC_URL + "/checkout"}
                   component={Checkout}
                 />
 
                 <Route
-                exact
+                  exact
                   path={process.env.PUBLIC_URL + "/not-found"}
                   component={NotFound}
                 />
@@ -281,7 +307,7 @@ const App = props => {
 };
 
 App.propTypes = {
-  dispatch: PropTypes.func
+  dispatch: PropTypes.func,
 };
 
 export default connect()(multilanguage(App));

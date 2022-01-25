@@ -2,8 +2,12 @@ import PropTypes from "prop-types";
 import React from "react";
 import { Link } from "react-router-dom";
 import { multilanguage } from "redux-multilanguage";
+import { useSelector } from "react-redux";
+import { ThunderboltOutlined, CrownOutlined } from '@ant-design/icons';
 
 const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }) => {
+  const setting = useSelector((state) => state.settingData.setting);
+
   return (
     <div
       className={` ${
@@ -73,10 +77,18 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }) => {
               {strings["collection"]}
             </Link>
           </li>
+          {setting && setting.is_campaign_sell && (
+            <li className="campaign-products">
+            <CrownOutlined /> <Link to={"/campaign"}>Campaign</Link>
+            </li>
+          )}
+          {setting && setting.is_flash_sell && (
+            <li className="flash-products">
+            <ThunderboltOutlined /> <Link to={"/flash"}>Flash Sell</Link>
+            </li>
+          )}
           <li>
-            <Link to={process.env.PUBLIC_URL + "/blog"}>
-              {strings["blog"]}
-            </Link>
+            <Link to={process.env.PUBLIC_URL + "/blog"}>{strings["blog"]}</Link>
           </li>
           <li>
             <Link to={process.env.PUBLIC_URL + "/contact"}>
@@ -92,7 +104,7 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }) => {
 NavMenu.propTypes = {
   menuWhiteClass: PropTypes.string,
   sidebarMenu: PropTypes.bool,
-  strings: PropTypes.object
+  strings: PropTypes.object,
 };
 
 export default multilanguage(NavMenu);
