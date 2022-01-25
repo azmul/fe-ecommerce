@@ -85,7 +85,7 @@ const Campaign = ({ location }) => {
                 <ShopTopbarFilter
                   getLayout={getLayout}
                   getFilterSortParams={getFilterSortParams}
-                  productCount={products.length}
+                  productCount={products && products.length}
                   sortedProductCount={currentData.length}
                   products={products}
                   getSortParams={getSortParams}

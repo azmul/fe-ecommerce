@@ -13,6 +13,7 @@ import {
 } from "./redux/actions/productActions";
 import { getSetting } from "./redux/actions/settingActions";
 import { useClearCacheCtx } from "react-clear-cache";
+import { fetchCategories } from "./redux/actions/commonActions";
 
 // home pages
 const HomeFashion = lazy(() => import("./pages/home/HomeFashion"));
@@ -69,6 +70,7 @@ const NotFound = lazy(() => import("./pages/other/NotFound"));
 const ShopSearch = lazy(() => import("./pages/shop/Search"));
 const CampaignPage = lazy(() => import("./pages/shop/Campaign"));
 const FlashPage = lazy(() => import("./pages/shop/Flash"));
+const MenuPage = lazy(() => import("./pages/shop/Menu"));
 
 const App = (props) => {
   const dispatch = useDispatch();
@@ -93,6 +95,7 @@ const App = (props) => {
     dispatch(fetchProducts());
     dispatch(getSetting());
     dispatch(fetchCollectionsProducts());
+    dispatch(fetchCategories());
   }, [dispatch]);
 
   return (
@@ -149,6 +152,11 @@ const App = (props) => {
                   exact
                   path={process.env.PUBLIC_URL + "/flash"}
                   component={FlashPage}
+                />
+                <Route
+                  exact
+                  path={process.env.PUBLIC_URL + "/menu"}
+                  component={MenuPage}
                 />
                 <Route
                   exact

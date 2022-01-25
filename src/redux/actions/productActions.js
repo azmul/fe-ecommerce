@@ -4,6 +4,7 @@ import { api } from "../../api/apiHelper";
 export const FETCH_HOME_PRODUCTS = "FETCH_HOME_PRODUCTS";
 export const FETCH_SEARCH_PRODUCTS = "FETCH_SEARCH_PRODUCTS";
 export const FETCH_CAMPAIGN_PRODUCTS = "FETCH_CAMPAIGN_PRODUCTS";
+export const FETCH_MENU_PRODUCTS = "FETCH_MENU_PRODUCTS";
 export const FETCH_FLASH_PRODUCTS = "FETCH_FLASH_PRODUCTS";
 export const FETCH_COLLECTIONS_PRODUCTS = "FETCH_COLLECTIONS_PRODUCTS";
 export const FETCH_REVIEW = "FETCH_REVIEW";
@@ -23,8 +24,22 @@ export const fetchProducts = () => {
   };
 };
 
+// fetch menu products
+export const fetchMenuProducts = (params) => {
+  return async (dispatch) => {
+    try {
+      const response = await api.get(`${Endpoints.PRODUCTS}`, {params: {...params}});
+      dispatch({
+        type: FETCH_MENU_PRODUCTS,
+        payload: response.data.data,
+      });
+    } finally {
+    }
+  };
+};
+
 // fetch flash products
-export const fetchFlashProducts = (name) => {
+export const fetchFlashProducts = () => {
   return async (dispatch) => {
     try {
       const response = await api.get(`${Endpoints.PRODUCTS}/flash`);

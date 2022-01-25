@@ -6,12 +6,14 @@ import {
   FETCH_QUESTION,
   FETCH_CAMPAIGN_PRODUCTS,
   FETCH_FLASH_PRODUCTS,
+  FETCH_MENU_PRODUCTS,
 } from "../actions/productActions";
 
 const initState = {
   homeProducts: [],
   flashProducts: [],
   campaignProducts: [],
+  menuProducts: [],
   products: [],
   searchProducts: [],
   review: null,
@@ -23,6 +25,13 @@ const productReducer = (state = initState, action) => {
     return {
       ...state,
       homeProducts: action.payload,
+    };
+  }
+
+  if (action.type === FETCH_MENU_PRODUCTS) {
+    return {
+      ...state,
+      menuProducts: action.payload,
     };
   }
 

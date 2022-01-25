@@ -3,7 +3,7 @@ import React, {useEffect} from "react";
 import ShopCategories from "../../components/product/ShopCategories";
 import ShopTag from "../../components/product/ShopTag";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCategories, fetchTags } from "../../redux/actions/commonActions";
+import { fetchTags } from "../../redux/actions/commonActions";
 
 const ShopSidebar = ({ getSortParams, sideSpaceClass }) => {
   const dispatch = useDispatch();
@@ -13,7 +13,6 @@ const ShopSidebar = ({ getSortParams, sideSpaceClass }) => {
 
   useEffect(() => {
     dispatch(fetchTags());
-    dispatch(fetchCategories());
   },[dispatch])
 
   return (

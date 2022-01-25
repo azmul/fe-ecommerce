@@ -3,14 +3,15 @@ import React, { Fragment, useState, useEffect } from "react";
 import MetaTags from "react-meta-tags";
 import Paginator from "react-hooks-paginator";
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
-import { connect } from "react-redux";
 import { getSortedProducts } from "../../helpers/product";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import ShopTopbarFilter from "../../wrappers/product/ShopTopbarFilter";
 import ShopProducts from "../../wrappers/product/ShopProducts";
+import { fetchMenuProducts } from "../../redux/actions/productActions";
+import { useSelector, useDispatch } from "react-redux";
 
-const Search = ({ location, products }) => {
+const Menu = ({ location }) => {
   const [layout, setLayout] = useState("grid three-column");
   const [sortType, setSortType] = useState("");
   const [sortValue, setSortValue] = useState("");
@@ -20,6 +21,12 @@ const Search = ({ location, products }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [currentData, setCurrentData] = useState([]);
   const [sortedProducts, setSortedProducts] = useState([]);
+  const dispatch = useDispatch();
+
+  const params = new URLSearchParams(location.search);
+  let item = params.get("item");
+
+  const products = useSelector((state) => state.productData.menuProducts);
 
   const pageLimit = 30;
   const { pathname } = location;
@@ -50,10 +57,14 @@ const Search = ({ location, products }) => {
     setCurrentData(sortedProducts.slice(offset, offset + pageLimit));
   }, [offset, products, sortType, sortValue, filterSortType, filterSortValue]);
 
+  useEffect(() => {
+    dispatch(fetchMenuProducts({ category: item }));
+  }, [dispatch, item]);
+
   return (
     <Fragment>
       <MetaTags>
-        <title>Kureghor | Shop Page</title>
+        <title>Kureghor | {item}</title>
         <meta
           name="description"
           content="Shop page of flone Purchase your desire products."
@@ -62,7 +73,7 @@ const Search = ({ location, products }) => {
 
       <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
-        Shop
+        Flash Sell
       </BreadcrumbsItem>
 
       <LayoutOne headerTop="visible">
@@ -109,15 +120,8 @@ const Search = ({ location, products }) => {
   );
 };
 
-Search.propTypes = {
+Menu.propTypes = {
   location: PropTypes.object,
-  products: PropTypes.array,
 };
 
-const mapStateToProps = (state) => {
-  return {
-    products: state.productData.searchProducts,
-  };
-};
-
-export default connect(mapStateToProps)(Search);
+export default Menu;
