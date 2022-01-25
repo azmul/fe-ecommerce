@@ -33,6 +33,8 @@ export const getOrderPayload = (cartItems, currency) => {
             sku: cartItem.sku,
             finalProductPrice,
             finalDiscountedPrice,
+            selectedProductColor: cartItem.selectedProductColor,
+            selectedProductSize: cartItem.selectedProductSize,
         })
         
     })

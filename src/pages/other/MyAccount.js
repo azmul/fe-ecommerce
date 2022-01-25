@@ -563,17 +563,25 @@ const MyAccount = ({ location }) => {
                                                   />
                                                 </Col>
                                                 <Divider type="vertical" />
-                                                <Col sm={9} xs={12}>
+                                                <Col sm={7} xs={12}>
                                                   Product 1: <br />
                                                   {product.name}
                                                 </Col>
                                                 <Divider type="vertical" />
-                                                <Col sm={5} xs={12}>
+                                                <Col sm={4} xs={12}>
                                                   Discount: {product.discount}৳
                                                 </Col>
                                                 <Divider type="vertical" />
-                                                <Col sm={5} xs={12}>
+                                                <Col sm={4} xs={12}>
                                                   Price: {product.price}৳
+                                                </Col>
+                                                <Divider type="vertical" />
+                                                <Col sm={2} xs={12}>
+                                                  Color: {product.selectedProductColor ? product.selectedProductColor : '---'}
+                                                </Col>
+                                                <Divider type="vertical" />
+                                                <Col sm={2} xs={12}>
+                                                  Size: {product.selectedProductSize ? product.selectedProductSize : '---'}
                                                 </Col>
                                                 <Divider type="vertical" />
                                                 <Col sm={2} xs={12}>

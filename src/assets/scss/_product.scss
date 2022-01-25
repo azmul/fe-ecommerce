@@ -511,6 +511,10 @@
                         &:last-child {
                             margin-right: 0px;
                         }
+                        &.red {
+                            background-color: #dc3545;
+                            border: 1px solid #dc3545;
+                        }
                         &.blue {
                             background-color: #4798f3;
                             border: 1px solid #4798f3;
@@ -530,6 +534,22 @@
                         &.yellow {
                             background-color: #e28b37;
                             border: 1px solid #e28b37;
+                        }
+                        &.white {
+                            background-color: #fff;
+                            border: 1px solid #333;
+                        }
+                        &.black {
+                            background-color: #333;
+                            border: 1px solid #333;
+                        }
+                        &.orange {
+                            background-color: #FFA500;
+                            border: 1px solid #FFA500;
+                        }
+                        &.brown {
+                            background-color: #964B00;
+                            border: 1px solid #964B00;
                         }
                     }
                 }
@@ -560,6 +580,10 @@
                             }
                         }
                     }
+                    &.red {
+                        background-color: #dc3545;
+                        border: 1px solid #dc3545;
+                    }
                     &.blue {
                         background-color: #4798f3;
                         border: 1px solid #4798f3;
@@ -589,8 +613,12 @@
                         border: 1px solid #333;
                     }
                     &.brown {
-                        background-color: brown;
-                        border: 1px solid brown;
+                        background-color: #964B00;
+                        border: 1px solid #964B00;
+                    }
+                    &.orange {
+                        background-color: #FFA500;
+                        border: 1px solid #FFA500;
                     }
                     .checkmark {
                         margin: 0;
