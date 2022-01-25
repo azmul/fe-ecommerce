@@ -19,7 +19,7 @@ import { fetchCategories } from "./redux/actions/commonActions";
 const HomeFashion = lazy(() => import("./pages/home/HomeFashion"));
 
 // shop pages
-const ShopGridStandard = lazy(() => import("./pages/shop/ShopGridStandard"));
+//const ShopGridStandard = lazy(() => import("./pages/shop/ShopGridStandard"));
 const ShopGridFilter = lazy(() => import("./pages/shop/ShopGridFilter"));
 const ShopGridTwoColumn = lazy(() => import("./pages/shop/ShopGridTwoColumn"));
 const ShopGridNoSidebar = lazy(() => import("./pages/shop/ShopGridNoSidebar"));
@@ -133,7 +133,7 @@ const App = (props) => {
                 <Route
                   exact
                   path={process.env.PUBLIC_URL + "/collection"}
-                  component={ShopGridStandard}
+                  component={CollectionPage}
                 />
                 <Route
                   exact

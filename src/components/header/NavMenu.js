@@ -21,7 +21,7 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }) => {
       <nav>
         <ul>
           <li>
-            <a href="javascript:void(0)">
+            <Link to={process.env.PUBLIC_URL + "/collection"}>
               {" "}
               {strings["shop"]}
               {sidebarMenu ? (
@@ -31,7 +31,7 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }) => {
               ) : (
                 <i className="fa fa-angle-down" />
               )}
-            </a>
+            </Link>
             <ul className="mega-menu">
               <li>
                 <ul>
@@ -62,7 +62,7 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }) => {
           </li>
           <li>
             <Link to={process.env.PUBLIC_URL + "/collection"}>
-              {strings["collection"]}
+              Products
             </Link>
           </li>
           {setting && setting.is_campaign_sell && (
