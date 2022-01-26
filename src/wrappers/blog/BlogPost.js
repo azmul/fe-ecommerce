@@ -7,6 +7,7 @@ import {
   TwitterShareButton,
 } from "react-share";
 import { UserOutlined } from "@ant-design/icons";
+import { Link } from "react-router-dom";
 
 const BlogPost = ({ blog }) => {
   return (
@@ -29,14 +30,12 @@ const BlogPost = ({ blog }) => {
           <p>{blog && blog.content}</p>
           <br />
           {blog && blog.product_url && (
-            <a
+            <Link
               className="for-order-section"
-              rel="noopener noreferrer"
-              target="_blank"
-              href={blog && blog.product_url}
+              to={process.env.PUBLIC_URL + `${blog && blog.product_url}`}
             >
               For Order Click Here
-            </a>
+            </Link>
           )}
           <br />
           <br />
@@ -56,14 +55,14 @@ const BlogPost = ({ blog }) => {
                 <p>
                   {blog.admin_message}.{" "}
                   {blog && blog.product_url && (
-                    <a
+                    <Link
                       className="for-order-section"
-                      rel="noopener noreferrer"
-                      target="_blank"
-                      href={blog && blog.product_url}
+                      to={
+                        process.env.PUBLIC_URL + `${blog && blog.product_url}`
+                      }
                     >
-                      Click For Order
-                    </a>
+                      Click for Order
+                    </Link>
                   )}
                 </p>
               }

@@ -9,6 +9,7 @@ import Carousel from "react-multi-carousel";
 import SectionTitle from "../../components/section-title/SectionTitle";
 
 const ProductGrid = ({
+  title,
   products,
   currency,
   addToCart,
@@ -18,66 +19,71 @@ const ProductGrid = ({
   wishlistItems,
   compareItems,
   sliderClassName,
-  spaceBottomClass
+  spaceBottomClass,
 }) => {
-    const responsive = {
-        superLargeDesktop: {
-          // the naming can be any, depends on you.
-          breakpoint: { max: 4000, min: 3000 },
-          items: 5,
-        },
-        desktop: {
-          breakpoint: { max: 3000, min: 1024 },
-          items: 4,
-        },
-        tablet: {
-          breakpoint: { max: 1024, min: 464 },
-          items: 2,
-        },
-        mobile: {
-          breakpoint: { max: 464, min: 0 },
-          items: 1,
-        },
-      };
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 4,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  };
   return (
     <Fragment>
       <div className="container">
-        <SectionTitle
-          titleText="Related Products"
-          positionClass="text-center"
-          spaceClass="mb-50"
-        />
-      <Carousel
-            responsive={responsive}
-          >
-      {products && products.length > 0 && products.map(product => {
-        return (
-          <ProductGridSingle
-            sliderClassName={sliderClassName}
-            spaceBottomClass={spaceBottomClass}
-            product={product}
-            currency={currency}
-            addToCart={addToCart}
-            addToWishlist={addToWishlist}
-            addToCompare={addToCompare}
-            cartItem={
-              cartItems.filter(cartItem => cartItem.id === product.id)[0]
-            }
-            wishlistItem={
-              wishlistItems.filter(
-                wishlistItem => wishlistItem.id === product.id
-              )[0]
-            }
-            compareItem={
-              compareItems.filter(
-                compareItem => compareItem.id === product.id
-              )[0]
-            }
-            key={product.id}
+        {title && (
+          <SectionTitle
+            titleText={title}
+            positionClass="text-center"
+            spaceClass="mb-50"
           />
-        );
-      })}
-      </Carousel>
+        )}
+
+        <Carousel responsive={responsive}>
+          {products &&
+            products.length > 0 &&
+            products.map((product) => {
+              return (
+                <ProductGridSingle
+                  sliderClassName={sliderClassName}
+                  spaceBottomClass={spaceBottomClass}
+                  product={product}
+                  currency={currency}
+                  addToCart={addToCart}
+                  addToWishlist={addToWishlist}
+                  addToCompare={addToCompare}
+                  cartItem={
+                    cartItems.filter(
+                      (cartItem) => cartItem.id === product.id
+                    )[0]
+                  }
+                  wishlistItem={
+                    wishlistItems.filter(
+                      (wishlistItem) => wishlistItem.id === product.id
+                    )[0]
+                  }
+                  compareItem={
+                    compareItems.filter(
+                      (compareItem) => compareItem.id === product.id
+                    )[0]
+                  }
+                  key={product.id}
+                />
+              );
+            })}
+        </Carousel>
       </div>
     </Fragment>
   );
@@ -93,7 +99,7 @@ ProductGrid.propTypes = {
   products: PropTypes.array,
   sliderClassName: PropTypes.string,
   spaceBottomClass: PropTypes.string,
-  wishlistItems: PropTypes.array
+  wishlistItems: PropTypes.array,
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -101,11 +107,11 @@ const mapStateToProps = (state, ownProps) => {
     currency: state.currencyData,
     cartItems: state.cartData,
     wishlistItems: state.wishlistData,
-    compareItems: state.compareData
+    compareItems: state.compareData,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     addToCart: (
       item,
@@ -129,7 +135,7 @@ const mapDispatchToProps = dispatch => {
     },
     addToCompare: (item, addToast) => {
       dispatch(addToCompare(item, addToast));
-    }
+    },
   };
 };
 

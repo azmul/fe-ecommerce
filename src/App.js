@@ -16,7 +16,7 @@ import { useClearCacheCtx } from "react-clear-cache";
 import { fetchCategories } from "./redux/actions/commonActions";
 
 // home pages
-const HomeFashion = lazy(() => import("./pages/home/HomeFashion"));
+const HomePage = lazy(() => import("./pages/home/Home"));
 
 // shop pages
 //const ShopGridStandard = lazy(() => import("./pages/shop/ShopGridStandard"));
@@ -78,7 +78,7 @@ const App = (props) => {
   const dispatch = useDispatch();
   const { isLatestVersion, emptyCacheStorage } = useClearCacheCtx();
 
-  /** Empy Cache when new version comes */
+  /** Empty Cache when new version comes */
   useEffect(() => {
     if (!isLatestVersion) {
       emptyCacheStorage();
@@ -119,14 +119,14 @@ const App = (props) => {
                 <Route
                   exact
                   path={process.env.PUBLIC_URL + "/"}
-                  component={HomeFashion}
+                  component={HomePage}
                 />
 
                 {/* Homepages */}
                 <Route
                   exact
                   path={process.env.PUBLIC_URL + "/home-fashion"}
-                  component={HomeFashion}
+                  component={HomePage}
                 />
 
                 {/* Shop pages */}

@@ -6,12 +6,14 @@ import LayoutOne from "../../layouts/LayoutOne";
 import ProductDescriptionTab from "../../wrappers/product/ProductDescriptionTab";
 import ProductImageDescription from "../../wrappers/product/ProductImageDescription";
 import RelatedProducts from "../../wrappers/product/RelatedProducts";
-import { getProducts } from "../../helpers/product";
+import { getSortedProducts } from "../../helpers/product";
+
+const CTAGORY = "category";
 
 const Product = ({ location, product, products }) => {
 
   const category = product && product.category ? product.category[0] : undefined;
-  const filteredProducts = getProducts(products, category, "new", 1000)
+  const filteredProducts = getSortedProducts(products, CTAGORY, category);
 
   return (
     <Fragment>
@@ -31,7 +33,7 @@ const Product = ({ location, product, products }) => {
           product={product}
         />
 
-        {category && filteredProducts.length > 0 && <RelatedProducts products={filteredProducts} /> }
+        {category && filteredProducts.length > 0 && <RelatedProducts title={"Related Products"} products={filteredProducts} /> }
         <br />
         <br />
         {/* product description tab */}
