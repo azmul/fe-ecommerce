@@ -2,12 +2,9 @@ import PropTypes from "prop-types";
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import MetaTags from "react-meta-tags";
-import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import LayoutOne from "../../layouts/LayoutOne";
-import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 
 const NotFound = ({ location }) => {
-  const { pathname } = location;
 
   return (
     <Fragment>
@@ -18,13 +15,7 @@ const NotFound = ({ location }) => {
           content="404 page of flone Purchase your desire products."
         />
       </MetaTags>
-      <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
-      <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
-        404 page
-      </BreadcrumbsItem>
       <LayoutOne headerTop="visible">
-        {/* breadcrumb */}
-        <Breadcrumb />
         <div className="error-area pt-40 pb-100">
           <div className="container">
             <div className="row justify-content-center">

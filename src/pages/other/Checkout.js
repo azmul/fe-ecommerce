@@ -3,10 +3,8 @@ import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import MetaTags from "react-meta-tags";
 import { connect } from "react-redux";
-import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import { getDiscountPrice } from "../../helpers/product";
 import LayoutOne from "../../layouts/LayoutOne";
-import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import { getOrderPayload } from "../../helpers/checkout";
 import { Form, Input, Button, Select, message } from "antd";
 import * as address from "@bangladeshi/bangladesh-address";
@@ -17,7 +15,6 @@ import * as userApi from "../../api/userApi";
 import {FETCH_USER} from "../../redux/actions/userActions";
 
 const Checkout = ({ location, cartItems, currency }) => {
-  const { pathname } = location;
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [district, setDistrict] = useState(undefined);
@@ -99,14 +96,8 @@ const Checkout = ({ location, cartItems, currency }) => {
           content="Checkout page of kureghor eCommerce."
         />
       </MetaTags>
-      <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
-      <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
-        Checkout
-      </BreadcrumbsItem>
       <LayoutOne headerTop="visible">
-        {/* breadcrumb */}
-        <Breadcrumb />
-        <div className="checkout-area pt-95 pb-100">
+        <div className="checkout-area pt-40 pb-50">
           <div className="container">
             {cartItems && cartItems.length >= 1 ? (
               <Form

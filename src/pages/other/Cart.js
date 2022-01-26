@@ -38,7 +38,7 @@ const Cart = ({
       </MetaTags>
 
       <LayoutOne headerTop="visible">
-        <div className="cart-main-area pt-90 pb-100">
+        <div className="cart-main-area pt-40 pb-50">
           <div className="container">
             {cartItems && cartItems.length >= 1 ? (
               <Fragment>
@@ -215,7 +215,7 @@ const Cart = ({
                     <div className="cart-shiping-update-wrapper">
                       <div className="cart-shiping-update">
                         <Link
-                          to={process.env.PUBLIC_URL + "/shop"}
+                          to={process.env.PUBLIC_URL + "/products"}
                         >
                           Continue Shopping
                         </Link>
@@ -285,7 +285,7 @@ const Cart = ({
                     </div>
                     <div className="item-empty-area__text">
                       No items found in cart <br />{" "}
-                      <Link to={process.env.PUBLIC_URL + "/shop"}>
+                      <Link to={process.env.PUBLIC_URL + "/products"}>
                         Shop Now
                       </Link>
                     </div>

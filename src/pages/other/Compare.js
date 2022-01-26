@@ -3,13 +3,11 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
 import MetaTags from "react-meta-tags";
-import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import { connect } from "react-redux";
 import { addToCart } from "../../redux/actions/cartActions";
 import { removeFromCompare } from "../../redux/actions/compareActions";
 import { getDiscountPrice } from "../../helpers/product";
 import LayoutOne from "../../layouts/LayoutOne";
-import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import Rating from "../../components/product/sub-components/ProductRating";
 
 const Compare = ({
@@ -20,7 +18,6 @@ const Compare = ({
   removeFromCompare,
   currency
 }) => {
-  const { pathname } = location;
   const { addToast } = useToasts();
 
   return (
@@ -32,14 +29,8 @@ const Compare = ({
           content="Purchase your desire products."
         />
       </MetaTags>
-      <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
-      <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
-        Compare
-      </BreadcrumbsItem>
       <LayoutOne headerTop="visible">
-        {/* breadcrumb */}
-        <Breadcrumb />
-        <div className="compare-main-area pt-90 pb-100">
+        <div className="compare-main-area pt-40 pb-50">
           <div className="container">
             {compareItems && compareItems.length >= 1 ? (
               <div className="row">
@@ -224,7 +215,7 @@ const Compare = ({
                     </div>
                     <div className="item-empty-area__text">
                       No items found in compare <br />{" "}
-                      <Link to={process.env.PUBLIC_URL + "/shop"}>
+                      <Link to={process.env.PUBLIC_URL + "/products"}>
                         Add Items
                       </Link>
                     </div>

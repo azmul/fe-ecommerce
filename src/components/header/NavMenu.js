@@ -67,7 +67,7 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }) => {
           </li>
           {setting && setting.is_campaign_sell && (
             <li className="campaign-products">
-              <CrownOutlined /> <Link to={"/campaign"}>Campaign</Link>
+              <CrownOutlined twoToneColor="#a749ff" /> <Link to={"/campaign"}>Campaign</Link>
             </li>
           )}
           {setting && setting.is_flash_sell && (

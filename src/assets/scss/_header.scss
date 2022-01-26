@@ -2221,17 +2221,21 @@
 
 .campaign-products{
     a {
-        color: red !important;
-        font-size: 18px !important;
-        font-weight: bold !important;
+        color: #a749ff !important;
+        font-size: 19px !important;
+    }
+    svg{
+        fill:  #a749ff !important;
     }
 }
 
 .flash-products{
     a {
         color: #c1c116 !important;
-        font-size: 18px !important;
-        font-weight: bold !important;
+        font-size: 19px !important;
+    }
+    svg{
+        fill:  #c1c116 !important;
     }
 }
 .sticky-bar {
