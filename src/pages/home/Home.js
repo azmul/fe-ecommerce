@@ -65,7 +65,7 @@ const HomePage = () => {
                 key={item.category}
                 header={<h4>{item.category} Products</h4>}
                 extra={
-                  <Button type="primary" onClick={goToProductDetails}>
+                  <Button type="primary" onClick={() => goToProductDetails(item.category)}>
                     Show More Products
                   </Button>
                 }
