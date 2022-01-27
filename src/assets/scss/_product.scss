@@ -551,6 +551,10 @@
                             background-color: #964B00;
                             border: 1px solid #964B00;
                         }
+                        &.pink {
+                            background-color: #FFC0CB;
+                            border: 1px solid #FFC0CB;
+                        }
                     }
                 }
                 &--single{
@@ -619,6 +623,10 @@
                     &.orange {
                         background-color: #FFA500;
                         border: 1px solid #FFA500;
+                    }
+                    &.pink {
+                        background-color: #FFC0CB;
+                        border: 1px solid #FFC0CB;
                     }
                     .checkmark {
                         margin: 0;

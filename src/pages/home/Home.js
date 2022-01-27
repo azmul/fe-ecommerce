@@ -58,9 +58,9 @@ const HomePage = () => {
         {/* tab product */}
         <TabProduct spaceBottomClass="pb-60" />
 
-        {productsGrid.map((item) => (
+        {productsGrid.map((item, index) => (
           <div className="container">
-            <Collapse>
+            <Collapse key={index}>
               <Panel
                 key={item.category}
                 header={<h4>{item.category} Products</h4>}
